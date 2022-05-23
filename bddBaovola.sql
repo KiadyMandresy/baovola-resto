@@ -19,7 +19,7 @@ Create table plat(
     prix double precision,
     idCategorie INTEGER,
     primary key(idPlat),
-    foreign key(idCategorie) REFERENCES categoriePlat(idCategorie)
+    foreign key(idCategorie) REFERENCES categoriePlat(id)
 );
 
 Create table commande(
@@ -30,25 +30,26 @@ Create table commande(
 );
 
 Create table detailCommande(
-    idCommande INTEGER,
+    id INTEGER,
     idPlat INTEGER,
     qte INTEGER,
-    foreign key(idCommande) REFERENCES commande(idCommande),
-    foreign key(idPlat) REFERENCES plat(idPlat)
+    foreign key(idCommande) REFERENCES commande(id),
+    foreign key(idPlat) REFERENCES plat(id)
 );
 
 Create table client(
     id INTEGER NOT NULL,
     idLatabatra INTEGER,
     primary key(idClient),
-    foreign key(idLatabatra) REFERENCES latabatra(idLatabatra)
+    foreign key(idLatabatra) REFERENCES latabatra(id)
 );
 
 Create table clientCommande(
-    idClient INTEGER,
+    id INTEGER NOT NULL,
+    idClient int,
     idCommande INTEGER,
-    foreign key(idClient) REFERENCES client(idClient),
-    foreign key(idCommande) REFERENCES commande(idCommande)
+    foreign key(idClient) REFERENCES client(id),
+    foreign key(idCommande) REFERENCES commande(id)
 ); 
 
 Create sequence seqLatabatra start with 1 increment by 1;
