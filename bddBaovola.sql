@@ -18,7 +18,7 @@ Create table plat(
     designation VARCHAR(50),
     prix double precision,
     idCategorie INTEGER,
-    primary key(idPlat),
+    primary key(id),
     foreign key(idCategorie) REFERENCES categoriePlat(id)
 );
 
@@ -26,7 +26,7 @@ Create table commande(
     id INTEGER NOT NULL,
     dateCom timestamp,
     status smallint default 0,
-    primary key(idCommande)
+    primary key(id)
 );
 
 Create table detailCommande(
@@ -34,6 +34,7 @@ Create table detailCommande(
     idCommande int,
     idPlat INTEGER,
     qte INTEGER,
+    primary key(id),
     foreign key(idCommande) REFERENCES commande(id),
     foreign key(idPlat) REFERENCES plat(id)
 );
@@ -41,7 +42,7 @@ Create table detailCommande(
 Create table client(
     id INTEGER NOT NULL,
     idLatabatra INTEGER,
-    primary key(idClient),
+    primary key(id),
     foreign key(idLatabatra) REFERENCES latabatra(id)
 );
 
