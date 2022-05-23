@@ -12,7 +12,7 @@ Create table categoriePlat(
     designation VARCHAR(40),
     primary key(id)
 );
-
+d
 Create table plat(
     id INTEGER NOT NULL,
     designation VARCHAR(50),
