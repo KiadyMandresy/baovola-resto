@@ -7,5 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <body>
-    <p>Hello nareo</p>
+    <div class="content">
+        <div class="container_12">
+          <div class="grid_12">
+              <p>Hello nareo</p>
+          </div>
+        </div>
+    </div>
 </body>
