@@ -4,13 +4,13 @@ Create table latabatra(
     id INTEGER NOT NULL,
     numero VARCHAR(40),
     isTaken smallint default 0,
-    primary key(idLatabatra)
+    primary key(id)
 );
 
 Create table categoriePlat(
     id INTEGER NOT NULL,
     designation VARCHAR(40),
-    primary key(idCategorie)
+    primary key(id)
 );
 
 Create table plat(
@@ -30,7 +30,8 @@ Create table commande(
 );
 
 Create table detailCommande(
-    id INTEGER,
+    id INTEGER not null,
+    idCommande int,
     idPlat INTEGER,
     qte INTEGER,
     foreign key(idCommande) REFERENCES commande(id),
