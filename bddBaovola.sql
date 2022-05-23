@@ -12,7 +12,7 @@ Create table categoriePlat(
     designation VARCHAR(40),
     primary key(id)
 );
-
+d
 Create table plat(
     id INTEGER NOT NULL,
     designation VARCHAR(50),
@@ -30,8 +30,8 @@ Create table commande(
 );
 
 Create table detailCommande(
-    id INTEGER NOT NULL,
-    idCommande INTEGER,
+    id INTEGER not null,
+    idCommande int,
     idPlat INTEGER,
     qte INTEGER,
     primary key(id),
