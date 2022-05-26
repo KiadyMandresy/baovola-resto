@@ -13,17 +13,15 @@ import java.sql.ResultSet;
  */
 public class Client extends BdTable{
     int id;
-    int idLatabatra;
     
     public Client constructeur(ResultSet res)throws Exception
     {
-        Client c=new Client(res.getInt(1),res.getInt(2));
+        Client c=new Client(res.getInt(1));
         return c;
     } 
 
-    public Client(int id, int idLatabatra) {
+    public Client(int id) {
         this.id = id;
-        this.idLatabatra = idLatabatra;
     }
 
     public Client() {
@@ -35,13 +33,5 @@ public class Client extends BdTable{
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getIdLatabatra() {
-        return idLatabatra;
-    }
-
-    public void setIdLatabatra(int idLatabatra) {
-        this.idLatabatra = idLatabatra;
     }
 }
