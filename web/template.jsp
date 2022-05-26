@@ -69,7 +69,7 @@
           <li class="current bt-icon "><a href="index.html">Home</a></li>
           <li></li>
          <li class="bt-icon"><a href="ServletCommandeValide">Liste commandes</a></li>
-         <li class="bt-icon"><a href="index-2.html">Menu</a></li>
+         <li class="bt-icon"><a href="ServletListePlat">Liste plat</a></li>
          <li class="bt-icon"><a href="index-3.html">Blog</a></li>
          <li class="bt-icon"><a href="index-4.html">Reservation</a></li>
          <li class="bt-icon"><a href="index-5.html">Contacts</a></li>
