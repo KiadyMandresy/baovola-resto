@@ -26,16 +26,20 @@ Create table commande(
     id INTEGER NOT NULL,
     dateCom timestamp,
     status smallint default 0,
-    primary key(id)
+    idTable INTEGER,
+    primary key(id),
+    foreign key(idTable) REFERENCES latabatra(id)
 );
 
 Create table detailCommande(
     id INTEGER not null,
     idCommande int,
     idPlat INTEGER,
+    idServeur INTEGER,
     qte INTEGER,
     primary key(id),
     foreign key(idCommande) REFERENCES commande(id),
+    foreign key(idServeur) REFERENCES utilisateur(id),
     foreign key(idPlat) REFERENCES plat(id)
 );
 
@@ -64,6 +68,7 @@ Create sequence seqLatabatra start with 1 increment by 1;
 Create sequence seqCategoriePlat start with 1 increment by 1;
 Create sequence seqPlat start with 1 increment by 1;
 Create sequence seqCommande start with 1 increment by 1;
+Create sequence seqDetailCommande start with 1 increment by 1;
 Create sequence seqClient start with 1 increment by 1;
 Create sequence seqUtilisateur start with 1 increment by 1;
 
