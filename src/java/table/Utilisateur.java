@@ -5,8 +5,10 @@
  */
 package table;
 
+import connex.Connex;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 
 /**
  *
@@ -65,4 +67,15 @@ public class Utilisateur extends BdTable{
         this.roleUser = roleUser;
     }
     
+    public Utilisateur log(String user,String mdp) throws Exception{
+        String req = "select * from utilisateur where username='"+user+"' and password='"+mdp+"'";
+        Utilisateur ret = new Utilisateur();
+        BdTable bd = new BdTable();
+        Connex c = new Connex();
+        Vector util = bd.findReq(req, ret, c.getCon());
+        if(util.size() == 1){
+            ret = (Utilisateur)(util.get(0));
+        }
+        return ret;
+    }
 }
