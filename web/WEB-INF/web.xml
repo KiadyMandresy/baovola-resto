@@ -16,6 +16,10 @@
         <servlet-name>attribuer</servlet-name>
         <servlet-class>servlet.attribuer</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>filtrer</servlet-name>
+        <servlet-class>servlet.filtrer</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>init</servlet-name>
         <url-pattern>/init</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>attribuer</servlet-name>
         <url-pattern>/attribuer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>filtrer</servlet-name>
+        <url-pattern>/filtrer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

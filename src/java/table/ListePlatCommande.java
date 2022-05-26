@@ -84,4 +84,11 @@ public class ListePlatCommande extends BdTable{
         return val;
     }
     
+    public Vector getListeByDate(String date1,String date2) throws Exception{
+        ListePlatCommande lpc = new ListePlatCommande();
+        Connex con = new Connex();
+        String req = "select * from listePlatCommande where date>='"+date1+"' and date<='"+date2+"'";
+        Vector val = this.findReq(req, lpc, con.getCon());
+        return val;
+    }
 }

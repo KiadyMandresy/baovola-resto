@@ -23,6 +23,15 @@
         <div style="float:left;">
             <h1>Cuisine - Plat à preparer</h1>
             </br>
+            <form action="filtrer" nethod="post">
+                <p>
+                    <input type="date" name="date1"/>
+                    <input type="date" name="date2"/>
+                    <div class="mt-3">
+                        <input class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit"/>
+                    </div>
+                </p>
+            </form>
             </br>
             <table>
                 <thead>
