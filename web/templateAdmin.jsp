@@ -306,9 +306,9 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
             <li class="nav-item">
-            <a class="nav-link" href="ServletTableNonPaye">
+            <a class="nav-link" href="ServletListePlat">
               <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Voir liste table non paye</span>
+              <span class="menu-title">Voir liste plats</span>
             </a>
           </li>
           <li class="nav-item">
@@ -423,6 +423,7 @@
       
       <!-- ETO no atao le TEMPLATE -->
       <jsp:include page="<%=view%>"/>
+    </div>
           
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->

@@ -14,6 +14,12 @@ insert into categoriePlat values(1, 'dessert');
 
 insert into plat values(1, 'tarte', 3500, 1);
 
+insert into ingredient values(1, 'farine', 2000, 1, 'kg');
+insert into ingredient values(2, 'citron', 3000, 1, 'kg');
+
+insert into detailPlat values(1, 1, 1, 0.5, 'kg');
+insert into detailPlat values(2, 1, 2, 0.5, 'kg');
+
 insert into detailCommande values(1, 3, 1, 1);
 insert into detailCommande values(2, 4, 1, 2);
 insert into detailCommande values(3, 5, 1, 3);
