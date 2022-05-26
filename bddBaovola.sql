@@ -22,6 +22,26 @@ Create table plat(
     foreign key(idCategorie) REFERENCES categoriePlat(id)
 );
 
+Create table ingredient(
+    id INTEGER NOT NULL,
+    nom VARCHAR(50),
+    prix double precision,
+    qte INTEGER,
+    unite VARCHAR(10),
+    primary key(id)
+);
+
+Create table detailPlat(
+    id INTEGER NOT NULL,
+    idPlat INTEGER,
+    idIngredient INTEGER,
+    qte double precision,
+    unite VARCHAR(10),
+    primary key(id),
+    foreign key(idPlat) REFERENCES plat(id),
+    foreign key(idIngredient) REFERENCES ingredient(id)
+);
+
 Create table commande(
     id INTEGER NOT NULL,
     dateCom timestamp,
@@ -71,3 +91,5 @@ Create sequence seqClient start with 1 increment by 1;
 Create sequence seqUtilisateur start with 1 increment by 1;
 
 CREATE UNIQUE INDEX username ON utilisateur(username);
+
+CREATE VIEW ingredientPlat as select d.qte as quantite,idPlat,i.nom as ingredient,i.prix as prix,i.unite as unite from detailPlat as d JOIN ingredient as i ON (d.idIngredient=i.id);

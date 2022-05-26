@@ -78,4 +78,30 @@ public class Plat extends BdTable{
         plat.setPrix(((Plat) li.get(0)).getPrix());
         return plat;
     }
+    
+    public Vector plats() throws Exception{
+        Vector liste = new Vector();
+        Connex con = new Connex();
+        liste = this.find(this, con.getCon());
+        con.deco();
+        return liste;
+    }
+    
+    public Vector recherchePlat(String mot) throws Exception{
+        Vector liste = new Vector();
+        Connex con = new Connex();
+        String req= "select * from plat where designation like '%"+mot+"' or designation like '%"+mot+"%' or designation like '"+mot+"%'";
+        liste = this.findReq(req, this, con.getCon());
+        con.deco();
+        return liste;
+    }
+    
+    public Vector platsCategorie(int idcat) throws Exception{
+        Vector liste = new Vector();
+        Connex con = new Connex();
+        String req= "select * from plat where idcategorie="+idcat;
+        liste = this.findReq(req, this, con.getCon());
+        con.deco();
+        return liste;
+    }
 }
