@@ -45,6 +45,7 @@ Create table detailCommande(
 
 Create table client(
     id INTEGER NOT NULL,
+    nom VARCHAR(255),
     primary key(id)
 );
 
