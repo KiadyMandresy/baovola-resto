@@ -11,6 +11,7 @@
     Plat fp = new Plat();
     String nomcli = "";
     String numtable ="";
+    double total = 0;
     if(request.getAttribute("detail")!=null){
         detail = (Vector)request.getAttribute("detail");
         nomcli = (String)request.getAttribute("nomcli");
@@ -69,10 +70,14 @@
                                 <td><% out.println( fp.getPlat( ((DetailCommande)detail.get(i)).getIdPlat() ).getDesignation() );%></td>
                                 <td><% out.println( fp.getPlat( ((DetailCommande)detail.get(i)).getIdPlat() ).getPrix() ); %></td>
                                 <td><% out.println( ((DetailCommande)detail.get(i)).getQte() ); %></td>
+                                <% total += ((DetailCommande)detail.get(i)).getQte() * fp.getPlat( ((DetailCommande)detail.get(i)).getIdPlat() ).getPrix();%>
                             </tr>
                        <% } %>
                       </tbody>
                     </table>
+                      <br>
+                      <br>
+                      <p>Total : <% out.println(total);%></p>
                 </div>
                 <% } %>
             </div>
