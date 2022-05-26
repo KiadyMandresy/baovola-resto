@@ -12,7 +12,7 @@ Create table categoriePlat(
     designation VARCHAR(40),
     primary key(id)
 );
-d
+
 Create table plat(
     id INTEGER NOT NULL,
     designation VARCHAR(50),
@@ -26,7 +26,9 @@ Create table commande(
     id INTEGER NOT NULL,
     dateCom timestamp,
     status smallint default 0,
-    primary key(id)
+    idTable int,
+    primary key(id),
+    foreign key(idTable) REFERENCES latabatra(id)
 );
 
 Create table detailCommande(
@@ -41,9 +43,8 @@ Create table detailCommande(
 
 Create table client(
     id INTEGER NOT NULL,
-    idLatabatra INTEGER,
-    primary key(id),
-    foreign key(idLatabatra) REFERENCES latabatra(id)
+    nom VARCHAR(100),
+    primary key(id)
 );
 
 Create table clientCommande(
@@ -54,8 +55,19 @@ Create table clientCommande(
     foreign key(idCommande) REFERENCES commande(id)
 ); 
 
+Create table utilisateur(
+    id INTEGER NOT NULL,
+    username VARCHAR(255),
+    password VARCHAR(255),
+    roleUser VARCHAR(50),
+    primary key(id)
+);
+
 Create sequence seqLatabatra start with 1 increment by 1;
 Create sequence seqCategoriePlat start with 1 increment by 1;
 Create sequence seqPlat start with 1 increment by 1;
 Create sequence seqCommande start with 1 increment by 1;
 Create sequence seqClient start with 1 increment by 1;
+Create sequence seqUtilisateur start with 1 increment by 1;
+
+CREATE UNIQUE INDEX username ON utilisateur(username);
