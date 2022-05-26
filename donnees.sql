@@ -10,7 +10,7 @@ insert into commande values(3, '2022-05-26 11:12:00', 1, 3);
 insert into commande values(4, '2022-05-26 11:12:00', 1, 4);
 insert into commande values(5, '2022-05-26 11:12:00', 1, 5);
 
-insert into categoriePlat values(1, "dessert");
+insert into categoriePlat values(1, 'dessert');
 
 insert into plat values(1, 'tarte', 3500, 1);
 
