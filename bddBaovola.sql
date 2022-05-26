@@ -12,7 +12,7 @@ Create table categoriePlat(
     designation VARCHAR(40),
     primary key(id)
 );
-d
+
 Create table plat(
     id INTEGER NOT NULL,
     designation VARCHAR(50),
@@ -26,7 +26,9 @@ Create table commande(
     id INTEGER NOT NULL,
     dateCom timestamp,
     status smallint default 0,
-    primary key(id)
+    idTable int,
+    primary key(id),
+    foreign key(idTable) REFERENCES latabatra(id)
 );
 
 Create table detailCommande(
@@ -41,6 +43,7 @@ Create table detailCommande(
 
 Create table client(
     id INTEGER NOT NULL,
+    nom VARCHAR(100),
     primary key(id)
 );
 
