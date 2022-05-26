@@ -5,6 +5,7 @@
  */
 package table;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -64,4 +65,5 @@ public class Plat extends BdTable{
         Plat p = new Plat(res.getInt(1),res.getString(2),res.getDouble(3),res.getInt(4));
         return p;
     }
+    
 }
