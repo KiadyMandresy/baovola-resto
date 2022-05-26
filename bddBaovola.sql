@@ -26,7 +26,7 @@ Create table commande(
     id INTEGER NOT NULL,
     dateCom timestamp,
     status smallint default 0,
-    idTable INTEGER,
+    idTable int,
     primary key(id),
     foreign key(idTable) REFERENCES latabatra(id)
 );
@@ -80,6 +80,8 @@ JOIN commande as c ON (d.idCommande=c.id)
 JOIN plat as p ON (d.idPlat=p.id) 
 where d.idServeur is null and c.status=1 
 order by d.id;
+
+insert into utilisateur values(nextval('seqUtilisateur'),'Kiady','kiady','Serveur');
 
 insert into latabatra values(nextval('seqLatabatra'),1,0);
 
