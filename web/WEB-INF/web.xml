@@ -4,9 +4,17 @@
         <servlet-name>init</servlet-name>
         <servlet-class>servlet.init</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCommandeValide</servlet-name>
+        <servlet-class>servlet.ServletCommandeValide</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>init</servlet-name>
         <url-pattern>/init</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCommandeValide</servlet-name>
+        <url-pattern>/ServletCommandeValide</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

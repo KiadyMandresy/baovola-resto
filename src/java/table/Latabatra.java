@@ -5,7 +5,9 @@
  */
 package table;
 
+import connex.Connex;
 import java.sql.ResultSet;
+import java.util.Vector;
 
 /**
  *
@@ -52,5 +54,17 @@ public class Latabatra extends BdTable{
     public Latabatra constructeur(ResultSet res)throws Exception{
         Latabatra lt = new Latabatra(res.getInt(1),res.getString(2),res.getInt(3));
         return lt;
+    }
+    
+    public Latabatra getLatatbatra(int idlatabatra) throws Exception{
+        Latabatra lat = new Latabatra();
+        Connex con = new Connex();
+        String req = "select * from latabatra where id="+idlatabatra;
+        Vector li = this.findReq(req, lat, con.getCon());
+        lat.setId( ((Latabatra)li.get(0)).getId() );
+        lat.setNumero( ((Latabatra)li.get(0)).getNumero() );
+        lat.setIsTaken( ((Latabatra)li.get(0)).getIsTaken() );
+        con.deco();
+        return lat;
     }
 }
