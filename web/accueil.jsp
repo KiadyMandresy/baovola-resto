@@ -23,15 +23,19 @@
                     <form id="form">
 
                        
-                        <label class="name"> 
-                        <select name="cat">
-                            <option value="t">None</option>
-                            <% for( int i=0; i<Categorie.size(); i++) { %>
-                               <option value="<%=((CategoriePlat)Categorie.get(i)).getId()%>"><% out.println(((CategoriePlat)Categorie.get(i)).getDesignation()); %></option>
-                            <% } %>                              
-                        </select>
-                        <a href="#" data-type="submit" class="btn">Send</a>
-                        </label>
+                 
+                        
+                        <div class="form-group row">
+                           <label class="col-sm-3 col-form-label">Categorie</label>
+                           <div class="col-sm-9">
+                             <select class="form-control" name="cat">
+                                 <option value="t">None</option>
+                                 <% for( int i=0; i<Categorie.size(); i++) { %>
+                                    <option value="<%=((CategoriePlat)Categorie.get(i)).getId()%>"><% out.println(((CategoriePlat)Categorie.get(i)).getDesignation()); %></option>
+                               <% } %>
+                             </select>
+                           </div>
+                         </div>
 
              
                         <div >
@@ -58,6 +62,8 @@
                               </tbody>
                             </table>
                           </div>
+                              
+                        
                         </div>
                         
                     </div>
