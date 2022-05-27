@@ -7,6 +7,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import table.CategoriePlat;
 import table.Utilisateur;
 
 /**
@@ -42,14 +44,18 @@ public class login extends HttpServlet {
             String mdp = request.getParameter("mdp");
             Utilisateur u = new Utilisateur();
             Utilisateur zao = u.log(user,mdp);
+            
             if(zao.getRoleUser()!=null){
                 session.setAttribute("utilisateur",zao);
+                
+                CategoriePlat cp = new CategoriePlat();
+                Vector v = cp.getCategorie();
+                request.setAttribute("listeCategorie", v);
+                
                 String view  = "accueil.jsp";
                 request.setAttribute("view",view);
                 RequestDispatcher dispat = request.getRequestDispatcher("/template.jsp");
                 dispat.forward(request,response);
-//                Utilisateur test = (Utilisateur)request.getSession().getAttribute("utilisateur");
-//                out.println(test.getUsernamde());
             }
             else response.sendRedirect("login.jsp");
         }

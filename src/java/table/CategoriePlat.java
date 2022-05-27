@@ -5,8 +5,10 @@
  */
 package table;
 
+import connex.Connex;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 
 /**
  *
@@ -42,6 +44,21 @@ public class CategoriePlat extends BdTable{
 
     public void setDesignation(String designation) {
         this.designation = designation;
+    }
+    
+    public Vector getCategorie() throws Exception{
+        CategoriePlat plat = new CategoriePlat();
+        Connex con = new Connex();
+        Vector val = this.find(plat, con.getCon());
+        return val;
+    }
+     
+    public  String getCatById(int id) throws Exception{
+        CategoriePlat cat = new CategoriePlat();
+        Connex con = new Connex();
+        String req = "select * from categorie where id="+id;
+        Vector val = this.findReq(req, cat, con.getCon());
+        return ((CategoriePlat)val.get(0)).getDesignation();
     }
     
 }

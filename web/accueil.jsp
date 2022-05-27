@@ -4,7 +4,14 @@
     Author     : Dawood
 --%>
 
+<%@page import="table.CategoriePlat"%>
+<%@page import="java.util.Vector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    Vector Categorie = (Vector)request.getAttribute("listeCategorie");
+    //out.println( ((CategoriePlat)Categorie.get(0)).getDesignation() );
+
+%>
 <!DOCTYPE html>
 <body>
     <div class="content">
@@ -18,7 +25,13 @@
                         
                         </div>
                         <label class="name">
-                        <input type="text" placeholder="Name:" data-constraints="@Required @JustLetters" />
+                            
+                            <select name="cat">
+                                <option value="t">None</option>
+                                <% for( int i=0; i<Categorie.size(); i++) { %>
+                                   <option value="<%=((CategoriePlat)Categorie.get(i)).getId()%>"><% out.println(((CategoriePlat)Categorie.get(i)).getDesignation()); %></option>
+                                <% } %>                              
+                            </select>
                         
                         </label>
 

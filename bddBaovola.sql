@@ -74,3 +74,42 @@ Create sequence seqClient start with 1 increment by 1;
 Create sequence seqUtilisateur start with 1 increment by 1;
 
 CREATE UNIQUE INDEX username ON utilisateur(username);
+
+insert into latabatra values(nextval('seqLatabatra'),1,0);
+insert into latabatra values(nextval('seqLatabatra'),2,0);
+insert into latabatra values(nextval('seqLatabatra'),3,0);
+insert into latabatra values(nextval('seqLatabatra'),4,0);
+
+
+insert into commande values(nextval('seqCommande'),'2022-05-26 17:10:40.169059+03',1,1);
+
+insert into categoriePlat values(nextval('seqCategoriePlat'), 'pate seche');
+insert into categoriePlat values(nextval('seqCategoriePlat'), 'soupe');
+insert into categoriePlat values(nextval('seqCategoriePlat'), 'boisson');
+insert into categoriePlat values(nextval('seqCategoriePlat'), 'dessert');
+
+insert into plat values(nextval('seqPlat'),'Mine sao',10000,1);
+insert into plat values(nextval('seqPlat'),'Mine sao special',12000,1);
+insert into plat values(nextval('seqPlat'),'Pate sautee',11500,1);
+insert into plat values(nextval('seqPlat'),'mine',10000,1);
+
+insert into plat values(nextval('seqPlat'),'Van tan mine',12000,2);
+insert into plat values(nextval('seqPlat'),'Van tan mine garnie',14000,2);
+insert into plat values(nextval('seqPlat'),'Tsock',10000,2);
+insert into plat values(nextval('seqPlat'),'Tsock special',14000,2);
+
+insert into plat values(nextval('seqPlat'),'Coca - cola',3000,3);
+insert into plat values(nextval('seqPlat'),'sprite',3000,3);
+insert into plat values(nextval('seqPlat'),'fanta',3500,3);
+insert into plat values(nextval('seqPlat'),'bonbon anglais',3000,3);
+
+insert into plat values(nextval('seqPlat'),'banane flambee',8000,4);
+insert into plat values(nextval('seqPlat'),'ile flottante',10000,4);
+insert into plat values(nextval('seqPlat'),'glace',8000,4);
+insert into plat values(nextval('seqPlat'),'cafe gourmand',10000,4);
+
+
+insert into detailCommande values(nextval('seqDetailCommande'),1,1,null,2);
+insert into detailCommande values(nextval('seqDetailCommande'),1,2,null,1);
+
+insert into utilisateur values(nextval('seqUtilisateur'),'kiady','qwerty','serveur');
