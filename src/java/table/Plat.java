@@ -5,7 +5,9 @@
  */
 package table;
 
+
 import connex.Connex;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -67,6 +69,7 @@ public class Plat extends BdTable{
         return p;
     }
     
+
     public Plat getPlat(int idplat) throws Exception{
         Plat plat = new Plat();
         Connex con = new Connex();
@@ -104,4 +107,5 @@ public class Plat extends BdTable{
         con.deco();
         return liste;
     }
+
 }
