@@ -51,7 +51,21 @@ public class login extends HttpServlet {
             Utilisateur zao = u.log(user,mdp);
 
             
-            if(zao.getRoleUser()!=null){
+          
+
+            if(zao.getRoleUser() == null) response.sendRedirect("login.jsp");
+            
+            if(zao.getRoleUser().compareTo("Cuisine") == 0){
+                ListePlatCommande lpc = new ListePlatCommande();
+                Vector liste = lpc.getListePlatCommande();
+                session.setAttribute("utilisateur",zao);
+                request.setAttribute("liste", liste);
+                RequestDispatcher dispat = request.getRequestDispatcher("/cuisine.jsp");
+
+                dispat.forward(request,response);
+            }
+            
+              if(zao.getRoleUser().compareTo("serveur")==0){
                 session.setAttribute("utilisateur",zao);
                 
                 CategoriePlat cp = new CategoriePlat();
@@ -65,16 +79,6 @@ public class login extends HttpServlet {
                 String view  = "accueil.jsp";
                 request.setAttribute("view",view);
                 RequestDispatcher dispat = request.getRequestDispatcher("/template.jsp");
-
-            if(zao.getRoleUser() == null) response.sendRedirect("login.jsp");
-            if(zao.getRoleUser().compareTo("Cuisine") == 0){
-                ListePlatCommande lpc = new ListePlatCommande();
-                Vector liste = lpc.getListePlatCommande();
-                session.setAttribute("utilisateur",zao);
-                request.setAttribute("liste", liste);
-                RequestDispatcher dispat = request.getRequestDispatcher("/cuisine.jsp");
-
-                dispat.forward(request,response);
             }
         }
     }

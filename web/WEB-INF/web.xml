@@ -20,7 +20,8 @@
     <servlet>
         <servlet-name>filtrer</servlet-name>
         <servlet-class>servlet.filtrer</servlet-class>
-
+    </servlet>
+    <servlet>
         <servlet-name>ServletCommandeValide</servlet-name>
         <servlet-class>servlet.ServletCommandeValide</servlet-class>
     </servlet>
@@ -53,7 +54,8 @@
     <servlet-mapping>
         <servlet-name>filtrer</servlet-name>
         <url-pattern>/filtrer</url-pattern>
-
+    </servlet-mapping>    
+    <servlet-mapping>
         <servlet-name>ServletCommandeValide</servlet-name>
         <url-pattern>/ServletCommandeValide</url-pattern>
     </servlet-mapping>
@@ -64,11 +66,11 @@
     <servlet-mapping>
         <servlet-name>ServletIngredientPlat</servlet-name>
         <url-pattern>/ServletIngredientPlat</url-pattern>
-
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+   
 </web-app>

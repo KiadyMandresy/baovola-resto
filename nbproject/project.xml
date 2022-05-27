@@ -15,13 +15,15 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-
-                    <file>${file.reference.postgresql-9.4.1212.jre7.jar}</file>
-
+                    <file>${file.reference.postgresql-42.3.3.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.postgresql-42.3.3.jar-1}</file>
+                    <file>${file.reference.javaee-endorsed-api-7.0.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${libs.MyLibrary.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
