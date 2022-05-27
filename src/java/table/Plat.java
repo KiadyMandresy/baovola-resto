@@ -79,7 +79,7 @@ public class Plat extends BdTable{
         return plat;
     }
     
-    public Vector plats() throws Exception{
+    public Vector getAllPlats() throws Exception{
         Vector liste = new Vector();
         Connex con = new Connex();
         liste = this.find(this, con.getCon());
@@ -96,7 +96,7 @@ public class Plat extends BdTable{
         return liste;
     }
     
-    public Vector platsCategorie(int idcat) throws Exception{
+    public Vector getPlatsByCat(int idcat) throws Exception{
         Vector liste = new Vector();
         Connex con = new Connex();
         String req= "select * from plat where idcategorie="+idcat;

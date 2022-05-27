@@ -42,13 +42,21 @@ Create table detailPlat(
     foreign key(idIngredient) REFERENCES ingredient(id)
 );
 
+Create table serveur(
+    id INTEGER NOT NULL,
+    nom varchar(50),
+    primary key(id)
+);
+
 Create table commande(
     id INTEGER NOT NULL,
     dateCom timestamp,
     status smallint default 0,
     idTable int,
+    idServeur int,
     primary key(id),
-    foreign key(idTable) REFERENCES latabatra(id)
+    foreign key(idTable) REFERENCES latabatra(id),
+    foreign key(idServeur) REFERENCES serveur(id)
 );
 
 Create table detailCommande(
@@ -91,6 +99,30 @@ create table marge(
     primary key(id)
 );
 
+create table payement(
+    id INTEGER NOT NULL,
+    idTable int,
+    date timestamp,
+    primary key(id),
+    foreign key(idTable) REFERENCES latabatra(id)
+);
+
+create table typePayement(
+    id INTEGER NOT NULL,
+    nom varchar(50),
+    primary key(id)
+);
+
+create table detailPayement(
+    id INTEGER NOT NULL,
+    idpayement int,
+    idTypepayement int,
+    montant double precision,
+    primary key(id),
+    foreign key(idpayement) REFERENCES payement(id),
+    foreign key(idTypepayement) REFERENCES typePayement(id)
+);
+
 Create sequence seqLatabatra start with 1 increment by 1;
 Create sequence seqCategoriePlat start with 1 increment by 1;
 Create sequence seqPlat start with 1 increment by 1;
@@ -100,7 +132,20 @@ Create sequence seqUtilisateur start with 1 increment by 1;
 Create sequence seqMarge start with 1 increment by 1;
 Create sequence seqDetailPlat start with 1 increment by 1;
 Create sequence seqIngredient start with 1 increment by 1;
+Create sequence seqPayement start with 1 increment by 1;
+Create sequence seqTypePayement start with 1 increment by 1;
+Create sequence seqDetailPayement start with 1 increment by 1;
+Create sequence seqServeur start with 1 increment by 1;
 
 CREATE UNIQUE INDEX username ON utilisateur(username);
 
 CREATE VIEW ingredientPlat as select d.qte as quantite,idPlat,i.nom as ingredient,i.prix as prix,i.unite as unite from detailPlat as d JOIN ingredient as i ON (d.idIngredient=i.id);
+
+CREATE VIEW vuePayement AS SELECT t.numero AS numerotable,
+    tp.nom AS typepayement,
+    dp.montant,
+    p.date
+   FROM detailpayement dp
+     JOIN payement p ON p.id = dp.idpayement
+     JOIN typepayement tp ON tp.id = dp.idtypepayement
+     JOIN latabatra t ON t.id = p.idtable;

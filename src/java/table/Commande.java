@@ -20,18 +20,20 @@ public class Commande extends BdTable{
     Timestamp dateCom;
     int status;
     int idTable;
+    int idServeur;
     
      public Commande constructeur(ResultSet res)throws Exception
     {
-        Commande c=new Commande(res.getInt(1),res.getTimestamp(2),res.getInt(3), res.getInt(4));
+        Commande c=new Commande(res.getInt(1),res.getTimestamp(2),res.getInt(3), res.getInt(4), res.getInt(5));
         return c;
     } 
 
-    public Commande(int id, Timestamp dateCom, int status, int idTable) {
+    public Commande(int id, Timestamp dateCom, int status, int idTable, int idServeur) {
         this.id = id;
         this.dateCom = dateCom;
         this.idTable = idTable;
         this.status = status;
+        this.idServeur = idServeur;
     }
    
     
@@ -70,6 +72,16 @@ public class Commande extends BdTable{
     public void setStatus(int status) {
         this.status = status;
     }
+
+    public int getIdServeur() {
+        return idServeur;
+    }
+
+    public void setIdServeur(int idServeur) {
+        this.idServeur = idServeur;
+    }
+    
+    
     
     public Vector getCommandesValide() throws Exception{
         Vector rep = new Vector();

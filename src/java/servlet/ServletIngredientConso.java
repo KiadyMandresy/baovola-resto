@@ -15,14 +15,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import table.CategoriePlat;
-import table.Plat;
+import table.IngredientConso;
 
 /**
  *
  * @author Dawood
  */
-public class ServletListePlat extends HttpServlet {
+public class ServletIngredientConso extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,27 +37,16 @@ public class ServletListePlat extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            Plat plat = new Plat();
-            CategoriePlat catplat= new CategoriePlat();
-            Vector liste = new Vector();
-            Vector categorie = catplat.getAllCategorie();
-            
-            if(request.getParameter("cat")!=null){
-                int idcat = new Integer(request.getParameter("cat"));
-                liste = plat.getPlatsByCat(idcat);
+              if(request.getParameter("date1")!=null && ((String)request.getParameter("date2"))!=null){
+               IngredientConso ic = new IngredientConso();
+               Vector list = ic.getIngredient(request.getParameter("date1"),request.getParameter("date2"));
+              
+               request.setAttribute("listIngredient",list);
+               request.setAttribute("date1", request.getParameter("date1"));
+               request.setAttribute("date2", request.getParameter("date2"));
             }
-            else if(request.getParameter("rech")!=null){
-                String mot = request.getParameter("rech");
-                liste = plat.recherchePlat(mot);
-            }
-            else{
-                liste = plat.getAllPlats();
-            }
-            
-            request.setAttribute("liste", liste);
-            request.setAttribute("cat", categorie);
-            
-            String view = "listeplat.jsp";
+
+            String view = "ingredientConso.jsp";
             request.setAttribute("view",view);
             RequestDispatcher dispat = request.getRequestDispatcher("/templateAdmin.jsp");
             dispat.forward(request,response);
@@ -80,7 +68,7 @@ public class ServletListePlat extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletListePlat.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletIngredientConso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -98,7 +86,7 @@ public class ServletListePlat extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletListePlat.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletIngredientConso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

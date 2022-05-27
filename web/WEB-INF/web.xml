@@ -16,6 +16,14 @@
         <servlet-name>ServletIngredientPlat</servlet-name>
         <servlet-class>servlet.ServletIngredientPlat</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletIngredientConso</servlet-name>
+        <servlet-class>servlet.ServletIngredientConso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletPayement</servlet-name>
+        <servlet-class>servlet.ServletPayement</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>init</servlet-name>
         <url-pattern>/init</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>ServletIngredientPlat</servlet-name>
         <url-pattern>/ServletIngredientPlat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletIngredientConso</servlet-name>
+        <url-pattern>/ServletIngredientConso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPayement</servlet-name>
+        <url-pattern>/ServletPayement</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -4,11 +4,14 @@ insert into latabatra values(3, 'Table 3', 0);
 insert into latabatra values(4, 'Table 4', 0);
 insert into latabatra values(5, 'Table 5', 0);
 
-insert into commande values(1, '2022-05-26 11:12:00', 0, 1);
-insert into commande values(2, '2022-05-26 11:12:00', 0, 2);
-insert into commande values(3, '2022-05-26 11:12:00', 1, 3);
-insert into commande values(4, '2022-05-26 11:12:00', 1, 4);
-insert into commande values(5, '2022-05-26 11:12:00', 1, 5);
+
+insert into serveur values(1, 'Jean');
+
+insert into commande values(1, '2022-05-26 11:12:00', 0, 1,1);
+insert into commande values(2, '2022-05-26 11:12:00', 0, 2,1);
+insert into commande values(3, '2022-05-26 11:12:00', 1, 3,1);
+insert into commande values(4, '2022-05-26 11:12:00', 1, 4,1);
+insert into commande values(5, '2022-05-26 11:12:00', 1, 5,1);
 
 insert into categoriePlat values(1, 'dessert');
 
@@ -34,3 +37,14 @@ insert into clientcommande values(3, 3,5);
 
 insert into marge values(1, 0, 5, 200);
 insert into marge values(2, 5, 10, 100);
+
+insert into payement values(1, 3, '2022-05-27');
+insert into payement values(2, 4, '2022-05-27');
+insert into payement values(3, 5, '2022-05-27');
+
+insert into typePayement values(1, 'Espece');
+insert into typePayement values(1, 'Carte');
+
+insert into detailPayement values(1, 1, 1, 500);
+insert into detailPayement values(2, 2, 2, 1000);
+insert into detailPayement values(3, 3, 1, 900);

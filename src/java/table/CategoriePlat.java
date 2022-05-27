@@ -46,7 +46,7 @@ public class CategoriePlat extends BdTable{
         this.designation = designation;
     }
     
-    public Vector categories() throws Exception{
+    public Vector getAllCategorie() throws Exception{
         Vector liste = new Vector();
         Connex con =new Connex();
         liste = this.find(this, con.getCon());
