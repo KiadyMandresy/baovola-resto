@@ -7,17 +7,23 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import table.ListePlatCommande;
+import table.Utilisateur;
 
 /**
  *
- * @author Dawood
+ * @author ravonirinafitahianarandriamanantena
  */
-public class init extends HttpServlet {
+public class login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,12 +35,26 @@ public class init extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            RequestDispatcher dispat = request.getRequestDispatcher("/login.jsp");
-            dispat.forward(request,response);
+            HttpSession session = request.getSession();
+            String user = request.getParameter("user");
+            String mdp = request.getParameter("mdp");
+            Utilisateur u = new Utilisateur();
+            Utilisateur zao = u.log(user,mdp);
+            if(zao.getRoleUser() == null) response.sendRedirect("login.jsp");
+            if(zao.getRoleUser().compareTo("Cuisine") == 0){
+                ListePlatCommande lpc = new ListePlatCommande();
+                Vector liste = lpc.getListePlatCommande();
+                session.setAttribute("utilisateur",zao);
+                request.setAttribute("liste", liste);
+                RequestDispatcher dispat = request.getRequestDispatcher("/cuisine.jsp");
+                dispat.forward(request,response);
+//                Utilisateur test = (Utilisateur)request.getSession().getAttribute("utilisateur");
+//                out.println(test.getUsernamde());
+            }
         }
     }
 
@@ -50,7 +70,11 @@ public class init extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -64,7 +88,11 @@ public class init extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
