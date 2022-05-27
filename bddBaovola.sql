@@ -83,12 +83,23 @@ Create table utilisateur(
     primary key(id)
 );
 
+create table marge(
+    id Integer NOT NULL,
+    prixMin double precision,
+    prixMax double precision,
+    pourcentage double precision,
+    primary key(id)
+);
+
 Create sequence seqLatabatra start with 1 increment by 1;
 Create sequence seqCategoriePlat start with 1 increment by 1;
 Create sequence seqPlat start with 1 increment by 1;
 Create sequence seqCommande start with 1 increment by 1;
 Create sequence seqClient start with 1 increment by 1;
 Create sequence seqUtilisateur start with 1 increment by 1;
+Create sequence seqMarge start with 1 increment by 1;
+Create sequence seqDetailPlat start with 1 increment by 1;
+Create sequence seqIngredient start with 1 increment by 1;
 
 CREATE UNIQUE INDEX username ON utilisateur(username);
 

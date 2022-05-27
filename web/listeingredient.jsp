@@ -4,7 +4,12 @@
     Vector listeIngr = (Vector)request.getAttribute("liste");
     String nom = (String)request.getAttribute("nom");
     String prix = (String)request.getAttribute("prix");
-    double tot =0;
+    int idplat = (Integer)request.getAttribute("idplat");
+    double prixsugg =0;
+    double total = ((IngredientPlat)listeIngr.get(0)).getSommePrixRev(idplat);
+    if(request.getAttribute("prixsugg")!=null){
+        prixsugg = (Double)request.getAttribute("prixsugg");
+    }
 %>
 
 <!DOCTYPE html>
@@ -36,17 +41,26 @@
                             <th><% out.println( ((IngredientPlat)listeIngr.get(i)).getQuantite() );%> </th>
                             <th><% out.println( ((IngredientPlat)listeIngr.get(i)).getPrixRev() );%> Ariary</th>
                         </tr>
-                        <% tot += ((IngredientPlat)listeIngr.get(i)).getPrixRev(); %>
                       <% } %>
                         <tr>
                             <th></th>
                             <th></th>
                             <th>Prix de revient :</th>
-                            <th><% out.println(tot);%> Ariary</th>
+                            <th><% out.println( total );%> Ariary</th>
                         </tr>
                       </tbody>
                     </table>
                   </div>
+                <form action="ServletIngredientPlat" method="post">
+                    <input type="hidden" name="idplat" value="<%=idplat%>">
+                    <input type="hidden" name="sugg" value="f">
+                    <input type="submit" value="Suggerer prix de vente">   
+                </form>
+                <% if(prixsugg!=0) {%>
+                    <br>
+                    <br>
+                    <h3>Prix de vente conseillé : <% out.println(prixsugg);%></h3>
+                <% } %>
                 </div>
               </div>
             </div>

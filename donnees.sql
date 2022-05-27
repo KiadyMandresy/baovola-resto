@@ -31,3 +31,6 @@ insert into client values(3, 'Kiady');
 insert into clientcommande values(1, 1,3);
 insert into clientcommande values(2, 2,4);
 insert into clientcommande values(3, 3,5);
+
+insert into marge values(1, 0, 5, 200);
+insert into marge values(2, 5, 10, 100);
