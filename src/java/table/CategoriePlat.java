@@ -46,6 +46,16 @@ public class CategoriePlat extends BdTable{
         this.designation = designation;
     }
     
+
+    public Vector getCategorie() throws Exception{
+        CategoriePlat plat = new CategoriePlat();
+        Connex con = new Connex();
+        Vector val = this.find(plat, con.getCon());
+        return val;
+    }
+     
+
+
     public Vector categories() throws Exception{
         Vector liste = new Vector();
         Connex con =new Connex();
@@ -59,6 +69,7 @@ public class CategoriePlat extends BdTable{
         String req = "select * from categoriePlat where id="+id;
         Vector val = this.findReq(req, this, con.getCon());
         con.deco();
+
         return ((CategoriePlat)val.get(0)).getDesignation();
     }
     

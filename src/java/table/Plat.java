@@ -8,6 +8,7 @@ package table;
 
 import connex.Connex;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -68,6 +69,22 @@ public class Plat extends BdTable{
         Plat p = new Plat(res.getInt(1),res.getString(2),res.getDouble(3),res.getInt(4));
         return p;
     }
+
+    public Vector getPlat() throws Exception{
+        Plat plat = new Plat();
+        Connex con = new Connex();
+        Vector val = this.find(plat, con.getCon());
+        return val;
+    }
+    
+    public Vector getPlatByCat(String id) throws Exception{
+        Plat plat = new Plat();
+        Connex con = new Connex();
+        String req = "select * from plat where id="+id;
+        Vector val = this.findReq(req, plat, con.getCon());
+        return val;
+    }
+
     
 
     public Plat getPlat(int idplat) throws Exception{
@@ -107,5 +124,6 @@ public class Plat extends BdTable{
         con.deco();
         return liste;
     }
+
 
 }
