@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import table.CategoriePlat;
+import table.Plat;
 import table.Utilisateur;
 
 /**
@@ -51,6 +52,10 @@ public class login extends HttpServlet {
                 CategoriePlat cp = new CategoriePlat();
                 Vector v = cp.getCategorie();
                 request.setAttribute("listeCategorie", v);
+                
+                Plat p = new Plat();
+                Vector plat = p.getPlat();
+                request.setAttribute("listePlat", plat);
                 
                 String view  = "accueil.jsp";
                 request.setAttribute("view",view);
