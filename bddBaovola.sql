@@ -74,4 +74,5 @@ Create sequence seqClient start with 1 increment by 1;
 Create sequence seqUtilisateur start with 1 increment by 1;
 
 CREATE UNIQUE INDEX username ON utilisateur(username);
+
 CREATE VIEW ingredientPlat as select d.qte as quantite,idPlat,i.nom as ingredient,i.prix as prix,i.unite as unite from detailPlat as d JOIN ingredient as i ON (d.idIngredient=i.id);
