@@ -45,7 +45,8 @@ public class login extends HttpServlet {
             Utilisateur u = new Utilisateur();
             Utilisateur zao = u.log(user,mdp);
             
-            if(zao.getRoleUser()!=null){
+            if(zao.getRoleUser()==null) response.sendRedirect("login.jsp");
+            if(zao.getRoleUser().compareTo("serveur")==0){
                 session.setAttribute("utilisateur",zao);
                 
                 CategoriePlat cp = new CategoriePlat();
@@ -57,7 +58,19 @@ public class login extends HttpServlet {
                 RequestDispatcher dispat = request.getRequestDispatcher("/template.jsp");
                 dispat.forward(request,response);
             }
-            else response.sendRedirect("login.jsp");
+            if(zao.getRoleUser().compareTo("admin")==0){
+                session.setAttribute("utilisateur",zao);
+//                
+////                CategoriePlat cp = new CategoriePlat();
+////                Vector v = cp.getCategorie();
+////                request.setAttribute("listeCategorie", v);
+//                
+                String view  = "testAdmin.jsp";
+                request.setAttribute("view",view);
+                RequestDispatcher dispat = request.getRequestDispatcher("/template.jsp");
+                dispat.forward(request,response);
+            }
+            
         }
     }
 
