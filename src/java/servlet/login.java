@@ -16,8 +16,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import table.CategoriePlat;
 import table.Plat;
+
+import table.ListePlatCommande;
+
 import table.Utilisateur;
 
 /**
@@ -45,6 +49,7 @@ public class login extends HttpServlet {
             String mdp = request.getParameter("mdp");
             Utilisateur u = new Utilisateur();
             Utilisateur zao = u.log(user,mdp);
+
             
             if(zao.getRoleUser()!=null){
                 session.setAttribute("utilisateur",zao);
@@ -60,9 +65,17 @@ public class login extends HttpServlet {
                 String view  = "accueil.jsp";
                 request.setAttribute("view",view);
                 RequestDispatcher dispat = request.getRequestDispatcher("/template.jsp");
+
+            if(zao.getRoleUser() == null) response.sendRedirect("login.jsp");
+            if(zao.getRoleUser().compareTo("Cuisine") == 0){
+                ListePlatCommande lpc = new ListePlatCommande();
+                Vector liste = lpc.getListePlatCommande();
+                session.setAttribute("utilisateur",zao);
+                request.setAttribute("liste", liste);
+                RequestDispatcher dispat = request.getRequestDispatcher("/cuisine.jsp");
+
                 dispat.forward(request,response);
             }
-            else response.sendRedirect("login.jsp");
         }
     }
 

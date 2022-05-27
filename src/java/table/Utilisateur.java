@@ -78,4 +78,13 @@ public class Utilisateur extends BdTable{
         }
         return ret;
     }
+    
+    public Vector getServeur() throws Exception{
+        String req = "select * from utilisateur where roleUser='Serveur'";
+        Utilisateur ret = new Utilisateur();
+        BdTable bd = new BdTable();
+        Connex c = new Connex();
+        Vector util = bd.findReq(req, ret, c.getCon());
+        return util;
+    }
 }

@@ -46,6 +46,7 @@ public class CategoriePlat extends BdTable{
         this.designation = designation;
     }
     
+
     public Vector getCategorie() throws Exception{
         CategoriePlat plat = new CategoriePlat();
         Connex con = new Connex();
@@ -53,11 +54,22 @@ public class CategoriePlat extends BdTable{
         return val;
     }
      
+
+
+    public Vector categories() throws Exception{
+        Vector liste = new Vector();
+        Connex con =new Connex();
+        liste = this.find(this, con.getCon());
+        con.deco();
+        return liste;
+    }
+    
     public  String getCatById(int id) throws Exception{
-        CategoriePlat cat = new CategoriePlat();
         Connex con = new Connex();
-        String req = "select * from categorie where id="+id;
-        Vector val = this.findReq(req, cat, con.getCon());
+        String req = "select * from categoriePlat where id="+id;
+        Vector val = this.findReq(req, this, con.getCon());
+        con.deco();
+
         return ((CategoriePlat)val.get(0)).getDesignation();
     }
     
