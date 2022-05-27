@@ -99,17 +99,15 @@ public class IngredientPlat extends BdTable {
         return somme;
     }
     
-    public double getPrixVente(int id, int marge1, int marge2,int pourc1,int pourc2,int pourc3 ) throws Exception{
+    public double getPrixVente(int id) throws Exception{
        double rev = this.getSommePrixRev(id);
        double prix = 0;
-       if(rev<marge1){
-           prix = rev + (rev*pourc1)/100;
-       }
-        if(rev>=marge1 && rev<marge2){
-           prix = rev + (rev*pourc2)/100;
-       }
-       if(rev>=marge2){
-           prix = rev + (rev*pourc3)/100;
+       Marge fm = new Marge();
+       Vector marge = fm.getMarge();
+       for(int i=0; i<marge.size(); i++){
+           if(rev>= ((Marge)marge.get(i)).getPrixMin() && rev< ((Marge)marge.get(i)).getPrixMax()){
+               prix = rev + (rev*((Marge)marge.get(i)).getPourcentage())/100;
+           }
        }
        return prix;
     }

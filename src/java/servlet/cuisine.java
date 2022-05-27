@@ -7,17 +7,22 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import table.ListePlatCommande;
+import table.Utilisateur;
 
 /**
  *
- * @author Dawood
+ * @author ravonirinafitahianarandriamanantena
  */
-public class init extends HttpServlet {
+public class cuisine extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,11 +34,23 @@ public class init extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            RequestDispatcher dispat = request.getRequestDispatcher("/login.jsp");
+            String i = request.getParameter("id");
+            int id = new Integer(i);
+            Utilisateur u = new Utilisateur();
+            ListePlatCommande lpc = new ListePlatCommande();
+            Vector liste = lpc.getListePlatCommande();
+            Vector plat = lpc.getListePlatCommandeById(id);
+            Vector serveur = u.getServeur();
+            String misy = "misy o";
+            request.setAttribute("misy", misy);
+            request.setAttribute("liste", liste);
+            request.setAttribute("plat", plat);
+            request.setAttribute("serveur", serveur);
+            RequestDispatcher dispat = request.getRequestDispatcher("/cuisine.jsp");
             dispat.forward(request,response);
         }
     }
@@ -50,7 +67,11 @@ public class init extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(cuisine.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -64,7 +85,11 @@ public class init extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(cuisine.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
