@@ -55,6 +55,30 @@ public class login extends HttpServlet {
 //                Utilisateur test = (Utilisateur)request.getSession().getAttribute("utilisateur");
 //                out.println(test.getUsernamde());
             }
+            if(zao.getRoleUser().compareTo("admin") == 0){
+//                ListePlatCommande lpc = new ListePlatCommande();
+//                Vector liste = lpc.getListePlatCommande();
+                session.setAttribute("utilisateur",zao);
+//                request.setAttribute("liste", liste);
+                String view = "listeingredient.jsp";
+                request.setAttribute("view", view);
+                RequestDispatcher dispat = request.getRequestDispatcher("/templateAdmin.jsp");
+                dispat.forward(request,response);
+//                Utilisateur test = (Utilisateur)request.getSession().getAttribute("utilisateur");
+//                out.println(test.getUsernamde());
+            }
+            if(zao.getRoleUser().compareTo("serveur") == 0){
+//                ListePlatCommande lpc = new ListePlatCommande();
+//                Vector liste = lpc.getListePlatCommande();
+                session.setAttribute("utilisateur",zao);
+//                request.setAttribute("liste", liste);
+                String view = "accueil.jsp";
+                request.setAttribute("view", view);
+                RequestDispatcher dispat = request.getRequestDispatcher("/template.jsp");
+                dispat.forward(request,response);
+//                Utilisateur test = (Utilisateur)request.getSession().getAttribute("utilisateur");
+//                out.println(test.getUsernamde());
+            }
         }
     }
 
