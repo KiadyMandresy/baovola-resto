@@ -6,8 +6,11 @@
 package table;
 
 
+import connex.Connex;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 
 /**
  *
@@ -66,4 +69,43 @@ public class Plat extends BdTable{
         return p;
     }
     
+
+    public Plat getPlat(int idplat) throws Exception{
+        Plat plat = new Plat();
+        Connex con = new Connex();
+        String req = "select * from plat where id="+idplat;
+        Vector li = plat.findReq(req, plat, con.getCon());
+        plat.setId( ((Plat) li.get(0)).getId() );
+        plat.setIdCategorie(((Plat) li.get(0)).getIdCategorie());
+        plat.setDesignation(((Plat) li.get(0)).getDesignation());
+        plat.setPrix(((Plat) li.get(0)).getPrix());
+        return plat;
+    }
+    
+    public Vector plats() throws Exception{
+        Vector liste = new Vector();
+        Connex con = new Connex();
+        liste = this.find(this, con.getCon());
+        con.deco();
+        return liste;
+    }
+    
+    public Vector recherchePlat(String mot) throws Exception{
+        Vector liste = new Vector();
+        Connex con = new Connex();
+        String req= "select * from plat where designation like '%"+mot+"' or designation like '%"+mot+"%' or designation like '"+mot+"%'";
+        liste = this.findReq(req, this, con.getCon());
+        con.deco();
+        return liste;
+    }
+    
+    public Vector platsCategorie(int idcat) throws Exception{
+        Vector liste = new Vector();
+        Connex con = new Connex();
+        String req= "select * from plat where idcategorie="+idcat;
+        liste = this.findReq(req, this, con.getCon());
+        con.deco();
+        return liste;
+    }
+
 }

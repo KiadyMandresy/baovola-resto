@@ -5,7 +5,9 @@
  */
 package table;
 
+import connex.Connex;
 import java.sql.ResultSet;
+import java.util.Vector;
 
 /**
  *
@@ -53,5 +55,16 @@ public class ClientCommande extends BdTable{
 
     public void setIdCommande(int idCommande) {
         this.idCommande = idCommande;
+    }
+    
+    public ClientCommande getClientCommande(int idcommande) throws Exception{
+        ClientCommande clicom = new ClientCommande();
+        Connex con = new Connex();
+        String req = "select * from clientCommande where idcommande="+idcommande;
+        Vector li = clicom.findReq(req, clicom, con.getCon());
+        clicom.setId( ((ClientCommande)li.get(0)).getId() );
+        clicom.setIdClient( ((ClientCommande)li.get(0)).getIdClient() );
+        clicom.setIdCommande( ((ClientCommande)li.get(0)).getIdCommande() );
+        return clicom;
     }
 }

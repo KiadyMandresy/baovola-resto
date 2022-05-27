@@ -12,6 +12,19 @@
      <head>
      <title>Home</title>
      <meta charset="utf-8">
+     
+     <link rel="stylesheet" href="contentassets/vendors/feather/feather.css">
+    <link rel="stylesheet" href="contentassets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="contentassets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="contentassets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="contentassets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="contentassets/js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="contentassets/css/vertical-layout-light/style.css">
+     
      <link rel="icon" href="images/favicon.ico">
      <link rel="shortcut icon" href="images/favicon.ico" />
      <link rel="stylesheet" href="css/style.css">
@@ -54,8 +67,9 @@
         <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
         <ul>
           <li class="current bt-icon "><a href="index.html">Home</a></li>
-         <li class="bt-icon"><a href="index-1.html">About</a></li>
-         <li class="bt-icon"><a href="index-2.html">Menu</a></li>
+          <li></li>
+         <li class="bt-icon"><a href="ServletCommandeValide">Liste commandes</a></li>
+         <li class="bt-icon"><a href="ServletListePlat">Liste plat</a></li>
          <li class="bt-icon"><a href="index-3.html">Blog</a></li>
          <li class="bt-icon"><a href="index-4.html">Reservation</a></li>
          <li class="bt-icon"><a href="index-5.html">Contacts</a></li>
@@ -97,5 +111,7 @@
         ); 
       }) 
     </script>
+    
+    
 </body>
 </html>
