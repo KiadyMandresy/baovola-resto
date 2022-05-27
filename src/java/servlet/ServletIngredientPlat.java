@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import table.IngredientPlat;
+import table.Marge;
 
 /**
  *
@@ -41,9 +42,15 @@ public class ServletIngredientPlat extends HttpServlet {
             IngredientPlat ip = new IngredientPlat();
             Vector liste = ip.getIngredientPlat(idplat);
             
+            if(request.getParameter("sugg")!=null){
+                double prixsugg = ip.getPrixVente(idplat);
+                request.setAttribute("prixsugg", prixsugg);
+            }
+            
             request.setAttribute("liste", liste);
             request.setAttribute("nom", request.getParameter("nom"));
             request.setAttribute("prix", request.getParameter("prix"));
+            request.setAttribute("idplat", idplat);
             
             String view = "listeingredient.jsp";
             request.setAttribute("view",view);

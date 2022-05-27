@@ -5,8 +5,10 @@
  */
 package table;
 
+import connex.Connex;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 
 /**
  *
