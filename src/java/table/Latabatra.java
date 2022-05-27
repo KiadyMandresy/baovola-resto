@@ -67,4 +67,19 @@ public class Latabatra extends BdTable{
         con.deco();
         return lat;
     }
+    
+    public Vector getAllLatabatra() throws Exception{
+        Connex con =new Connex();
+        Vector liste = this.find(this, con.getCon());
+        con.deco();
+        return liste;
+    }
+    
+    public Vector getFreeLatabatra() throws Exception{
+        Connex con =new Connex();
+        String req = "select * from latabatra where isTaken=0";
+        Vector liste = this.findReq(req,this, con.getCon());
+        con.deco();
+        return liste;
+    }
 }

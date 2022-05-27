@@ -54,7 +54,7 @@
                 <form action="ServletIngredientPlat" method="post">
                     <input type="hidden" name="idplat" value="<%=idplat%>">
                     <input type="hidden" name="sugg" value="f">
-                    <input type="submit" value="Suggerer prix de vente">   
+                    <input type="submit" value="Suggerer prix de vente" class="btn btn-secondary">   
                 </form>
                 <% if(prixsugg!=0) {%>
                     <br>
