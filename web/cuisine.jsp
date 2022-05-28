@@ -20,7 +20,7 @@
     </head>
     <body>
     <center>
-        <div style="float:left;">
+        <div style="float:left;margin-left: 15%;">
             <h1>Cuisine - Plat à preparer</h1>
             </br>
             <form action="filtrer" nethod="post">
@@ -59,7 +59,7 @@
             ListePlatCommande l = (ListePlatCommande)(plat.get(0));
             Vector serveur = (Vector)request.getAttribute("serveur");
         %>
-        <div style="float:right;">
+        <div style="float:right;margin-right: 15%;">
             <p><h1>Plat : <% out.println(l.getDesignation()); %></h1></p>
             </br>
             </br>
