@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import table.CategoriePlat;
 import table.ListePlatCommande;
+import table.Plat;
 import table.Utilisateur;
 
 /**
@@ -39,12 +41,18 @@ public class login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
+            
+            
             HttpSession session = request.getSession();
             String user = request.getParameter("user");
             String mdp = request.getParameter("mdp");
             Utilisateur u = new Utilisateur();
+            
             Utilisateur zao = u.log(user,mdp);
+            
             if(zao.getRoleUser() == null) response.sendRedirect("login.jsp");
+            
             if(zao.getRoleUser().compareTo("Cuisine") == 0){
                 ListePlatCommande lpc = new ListePlatCommande();
                 Vector liste = lpc.getListePlatCommande();
@@ -52,32 +60,37 @@ public class login extends HttpServlet {
                 request.setAttribute("liste", liste);
                 RequestDispatcher dispat = request.getRequestDispatcher("/cuisine.jsp");
                 dispat.forward(request,response);
-//                Utilisateur test = (Utilisateur)request.getSession().getAttribute("utilisateur");
-//                out.println(test.getUsernamde());
+                System.out.println('1');
+
             }
+            
             if(zao.getRoleUser().compareTo("admin") == 0){
-//                ListePlatCommande lpc = new ListePlatCommande();
-//                Vector liste = lpc.getListePlatCommande();
+
                 session.setAttribute("utilisateur",zao);
-//                request.setAttribute("liste", liste);
                 String view = "listeingredient.jsp";
                 request.setAttribute("view", view);
                 RequestDispatcher dispat = request.getRequestDispatcher("/templateAdmin.jsp");
                 dispat.forward(request,response);
-//                Utilisateur test = (Utilisateur)request.getSession().getAttribute("utilisateur");
-//                out.println(test.getUsernamde());
+                System.out.println('2');
             }
-            if(zao.getRoleUser().compareTo("serveur") == 0){
-//                ListePlatCommande lpc = new ListePlatCommande();
-//                Vector liste = lpc.getListePlatCommande();
+            
+            if(zao.getRoleUser().compareTo("serveur")==0){
+                
                 session.setAttribute("utilisateur",zao);
-//                request.setAttribute("liste", liste);
-                String view = "accueil.jsp";
-                request.setAttribute("view", view);
+                
+                CategoriePlat cp = new CategoriePlat();
+                Vector v = cp.getCategorie();
+                request.setAttribute("listeCategorie", v);
+                
+                Plat p = new Plat();
+                Vector plat = p.plats();
+                request.setAttribute("listePlat", plat);
+                
+                String view  = "accueil.jsp";
+                request.setAttribute("view",view);
                 RequestDispatcher dispat = request.getRequestDispatcher("/template.jsp");
                 dispat.forward(request,response);
-//                Utilisateur test = (Utilisateur)request.getSession().getAttribute("utilisateur");
-//                out.println(test.getUsernamde());
+                
             }
         }
     }
