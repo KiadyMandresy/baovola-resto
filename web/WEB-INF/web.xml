@@ -52,7 +52,7 @@
         <servlet-name>ServletFaireAchatIngredient</servlet-name>
         <servlet-class>servlet.ServletFaireAchatIngredient</servlet-class>
      </servlet>
-    <servlet    
+    <servlet>    
         <servlet-name>ServletPlat</servlet-name>
         <servlet-class>servlet.ServletPlat</servlet-class>
     </servlet>
