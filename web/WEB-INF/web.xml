@@ -40,6 +40,10 @@
         <servlet-name>ServletPayement</servlet-name>
         <servlet-class>servlet.ServletPayement</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletPourboire</servlet-name>
+        <servlet-class>servlet.ServletPourboire</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>init</servlet-name>
         <url-pattern>/init</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>ServletPayement</servlet-name>
         <url-pattern>/ServletPayement</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPourboire</servlet-name>
+        <url-pattern>/ServletPourboire</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

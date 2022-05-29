@@ -37,8 +37,8 @@
                       <% for(int i=0; i<listeIngr.size(); i++) { %>
                         <tr>
                             <th><% out.println( ((IngredientPlat)listeIngr.get(i)).getIngredient() );%></th>
-                            <th><% out.println( ((IngredientPlat)listeIngr.get(i)).getUnite() );%></th>
                             <th><% out.println( ((IngredientPlat)listeIngr.get(i)).getQuantite() );%> </th>
+                            <th><% out.println( ((IngredientPlat)listeIngr.get(i)).getUnite() );%></th>
                             <th><% out.println( ((IngredientPlat)listeIngr.get(i)).getPrixRev() );%> Ariary</th>
                         </tr>
                       <% } %>
@@ -59,7 +59,7 @@
                 <% if(prixsugg!=0) {%>
                     <br>
                     <br>
-                    <h3>Prix de vente conseillé : <% out.println(prixsugg);%></h3>
+                    <h3>Prix de vente conseillé : <% out.println(prixsugg);%> Ariary</h3>
                 <% } %>
                 </div>
               </div>

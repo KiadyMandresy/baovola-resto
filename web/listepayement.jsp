@@ -67,7 +67,7 @@
                             <form class="form-inline" action="ServletDetailPlat" method="post">
                                 <th><% out.println( ((VuePayement)liste.get(i)).getNumeroTable() ); %></th>
                                 <th><% out.println( ((VuePayement)liste.get(i)).getTypePayement()); %></th>
-                                <th><% out.println( ((VuePayement)liste.get(i)).getMontant()); %></th>
+                                <th><% out.println( ((VuePayement)liste.get(i)).getMontant()); %> Ariary</th>
                                 <th><% out.println( ((VuePayement)liste.get(i)).getDaty()); %></th>
                             </form>
                         </tr>
@@ -75,7 +75,7 @@
                         <tr>
                             <th></th>
                             <th>Total :</th>
-                            <th><% out.println(total);%></th>
+                            <th><% out.println(total);%> Ariary</th>
                             <th></th>
                         </tr>
                         <% } %>

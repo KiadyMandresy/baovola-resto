@@ -60,7 +60,7 @@ public class login extends HttpServlet {
 //                Vector liste = lpc.getListePlatCommande();
                 session.setAttribute("utilisateur",zao);
 //                request.setAttribute("liste", liste);
-                String view = "listeingredient.jsp";
+                String view = "accueilAdmin.jsp";
                 request.setAttribute("view", view);
                 RequestDispatcher dispat = request.getRequestDispatcher("/templateAdmin.jsp");
                 dispat.forward(request,response);
