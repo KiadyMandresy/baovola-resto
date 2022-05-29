@@ -204,3 +204,11 @@ Create view pourboireCommande as
             ON (dc.idPlat=p.id)
         join serveur s
             ON (c.idServeur=s.id);
+
+Create view mouvementstock as 
+    select si.idIngredient as idingredient, sum(si.entree) as totalentree, sum(si.sortie) as totalsortie from stockIngredient si 
+        where date>=(select max(date) from inventaire where idIngredient=si.idIngredient) 
+        group by si.idIngredient;
+
+create view resteIngredient as 
+    select ms.idingredient as idingredient, i.qte + (ms.totalentree-ms.totalsortie) as reste  from mouvementstock ms join inventaire i on (ms.idingredient=i.idingredient);

@@ -23,6 +23,12 @@ insert into plat values(1, 'tarte', 3500, 1);
 insert into ingredient values(1, 'farine', 2000, 1, 'kg');
 insert into ingredient values(2, 'citron', 3000, 1, 'kg');
 
+insert into stockIngredient values(1, 1, 200, 0, '2022-05-29 16:00:00');
+insert into stockIngredient values(2, 2, 200, 0, '2022-05-29 16:00:00');
+
+insert into stockIngredient values(3, 1, 0, 100, '2022-05-29 16:00:00');
+insert into stockIngredient values(4, 2, 0, 100, '2022-05-29 16:00:00');
+
 insert into detailPlat values(1, 1, 1, 0.5, 'kg');
 insert into detailPlat values(2, 1, 2, 0.5, 'kg');
 
