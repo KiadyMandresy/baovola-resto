@@ -107,5 +107,35 @@ public class Plat extends BdTable{
         con.deco();
         return liste;
     }
+    
+    public void insertPlat(String des, double prix, int idcat) throws Exception{
+        Plat plat = new Plat();
+        Connex con = new Connex();
+        plat.setDesignation(des);
+        plat.setPrix(prix);
+        plat.setIdCategorie(idcat);
+        plat.insertInto(con.getCon());
+        con.deco();
+    }
+    
+    public Plat getLastPlat() throws Exception{
+        Plat plat = new Plat();
+        Connex con = new Connex();
+        String req = "select * from plat where id=(select max(id) from plat)";
+        Vector li = plat.findReq(req, plat, con.getCon());
+        plat.setId( ((Plat) li.get(0)).getId() );
+        plat.setIdCategorie(((Plat) li.get(0)).getIdCategorie());
+        plat.setDesignation(((Plat) li.get(0)).getDesignation());
+        plat.setPrix(((Plat) li.get(0)).getPrix());
+        return plat;
+    }
+    
+    public void deletePlat(int id) throws Exception{
+        Plat plat = new Plat();
+        Connex con = new Connex();
+        plat.setId(id);
+        plat.deleteInto(con.getCon());
+        con.deco();
+    }
 
 }

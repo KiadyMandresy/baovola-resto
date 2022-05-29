@@ -5,8 +5,10 @@
  */
 package table;
 
+import connex.Connex;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 
 /**
  *
@@ -16,15 +18,15 @@ public class DetailPlat extends BdTable {
     int id;
     int idPlat;
     int idIngredient;
-    int qte;
+    double qte;
     String unite;
     
     public DetailPlat constructeur(ResultSet res) throws SQLException{
-        DetailPlat cp = new DetailPlat(res.getInt(1),res.getInt(2),res.getInt(3),res.getInt(4),res.getString(5));
+        DetailPlat cp = new DetailPlat(res.getInt(1),res.getInt(2),res.getInt(3),res.getDouble(4),res.getString(5));
         return cp;
     }
     
-    public DetailPlat(int id, int idPlat, int idIngredient, int qte, String unite) {
+    public DetailPlat(int id, int idPlat, int idIngredient, double qte, String unite) {
         this.id = id;
         this.idPlat = idPlat;
         this.idIngredient = idIngredient;
@@ -47,7 +49,7 @@ public class DetailPlat extends BdTable {
         return idIngredient;
     }
 
-    public int getQte() {
+    public double getQte() {
         return qte;
     }
 
@@ -67,7 +69,7 @@ public class DetailPlat extends BdTable {
         this.idIngredient = idIngredient;
     }
 
-    public void setQte(int qte) {
+    public void setQte(double qte) {
         this.qte = qte;
     }
 
@@ -75,5 +77,30 @@ public class DetailPlat extends BdTable {
         this.unite = unite;
     }
     
+    public Vector getDetailPlatByPlat(int idplat) throws Exception{
+        Vector liste = new Vector();
+        Connex con = new Connex();
+        String req = "select * from detailPlat where idPlat="+idplat;
+        liste = this.findReq(req, this, con.getCon());
+        con.deco();
+        return liste;
+    }
     
+    public void insertDetailPlat(int idplat, int idIngredient, double qte, String unite ) throws Exception{
+        DetailPlat dp = new DetailPlat();
+        Connex con =new Connex();
+        dp.setIdPlat(idplat);
+        dp.setIdIngredient(idIngredient);
+        dp.setQte(qte);
+        dp.setUnite(unite);
+        dp.insertInto(con.getCon());
+        con.deco();
+    }
+    public void supprimerDetailPlat(int id) throws Exception{
+        DetailPlat dp = new DetailPlat();
+        Connex con = new Connex();
+        dp.setId(id);
+        dp.deleteInto(con.getCon());
+        con.deco();
+    }
 }

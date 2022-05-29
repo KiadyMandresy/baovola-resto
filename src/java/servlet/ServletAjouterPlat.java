@@ -16,14 +16,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import table.CategoriePlat;
-import table.DetailPlat;
+import table.Ingredient;
 import table.Plat;
 
 /**
  *
  * @author Dawood
  */
-public class ServletListePlat extends HttpServlet {
+public class ServletAjouterPlat extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,37 +39,36 @@ public class ServletListePlat extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            CategoriePlat cp = new CategoriePlat();
             Plat plat = new Plat();
-            CategoriePlat catplat= new CategoriePlat();
-            Vector liste = new Vector();
-            Vector categorie = catplat.getAllCategorie();
-            
-            if(request.getParameter("suppr")!=null){
-                int idplat = new Integer(request.getParameter("suppr"));
-                DetailPlat dp = new DetailPlat();
-                Vector detailplat = dp.getDetailPlatByPlat(idplat);
-                for(int i=0;i<detailplat.size();i++){
-                    dp.supprimerDetailPlat( ((DetailPlat)detailplat.get(i)).getId() );
-                }
-                plat.deletePlat(idplat);
-                liste = plat.getAllPlats();
-            }
-            if(request.getParameter("cat")!=null){
-                int idcat = new Integer(request.getParameter("cat"));
-                liste = plat.getPlatsByCat(idcat);
-            }
-            else if(request.getParameter("rech")!=null){
-                String mot = request.getParameter("rech");
-                liste = plat.recherchePlat(mot);
-            }
-            else{
-                liste = plat.getAllPlats();
-            }
-            
+            Vector liste = cp.getAllCategorie();
             request.setAttribute("liste", liste);
-            request.setAttribute("cat", categorie);
+            String view = "ajoutplat.jsp";
+            String message ="";
             
-            String view = "listeplat.jsp";
+            if(request.getParameter("des")!=null && request.getParameter("prix")!=null && request.getParameter("idcategorie")!=null){
+                String des = request.getParameter("des");
+                double prix = new Double(request.getParameter("prix"));
+                int cat = new Integer(request.getParameter("idcategorie"));
+                Ingredient ingr = new Ingredient();
+                try{
+                    view = "ajoutingredient.jsp";
+                    message="Ajout de nouveau plat reussi";
+                    plat.insertPlat(des, prix, cat);
+                    plat = plat.getLastPlat();
+                    Vector listeIngr = ingr.getAllIngredient();
+                    
+                    request.setAttribute("ingredient", listeIngr);
+                    request.setAttribute("idplat", plat.getId());
+                    
+                }catch(Exception ex){
+                    view = "ajoutplat.jsp";
+                    message = "L' ajout de ce plat a echoue";
+                }
+                request.setAttribute("message", message);
+            }
+            
+            
             request.setAttribute("view",view);
             RequestDispatcher dispat = request.getRequestDispatcher("/templateAdmin.jsp");
             dispat.forward(request,response);
@@ -91,7 +90,7 @@ public class ServletListePlat extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletListePlat.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletAjouterPlat.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -109,7 +108,7 @@ public class ServletListePlat extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletListePlat.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletAjouterPlat.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

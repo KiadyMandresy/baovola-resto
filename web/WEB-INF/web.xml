@@ -52,6 +52,14 @@
         <servlet-name>ServletFaireAchatIngredient</servlet-name>
         <servlet-class>servlet.ServletFaireAchatIngredient</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAjouterPlat</servlet-name>
+        <servlet-class>servlet.ServletAjouterPlat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAjoutIngredient</servlet-name>
+        <servlet-class>servlet.ServletAjoutIngredient</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>init</servlet-name>
         <url-pattern>/init</url-pattern>
@@ -103,6 +111,14 @@
     <servlet-mapping>
         <servlet-name>ServletFaireAchatIngredient</servlet-name>
         <url-pattern>/ServletFaireAchatIngredient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAjouterPlat</servlet-name>
+        <url-pattern>/ServletAjouterPlat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAjoutIngredient</servlet-name>
+        <url-pattern>/ServletAjoutIngredient</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
