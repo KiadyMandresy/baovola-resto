@@ -32,6 +32,22 @@
         <servlet-name>ServletIngredientPlat</servlet-name>
         <servlet-class>servlet.ServletIngredientPlat</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletPlat</servlet-name>
+        <servlet-class>servlet.ServletPlat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletCategoriePlat</servlet-name>
+        <servlet-class>servlet.ServletCategoriePlat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAjoutPlat</servlet-name>
+        <servlet-class>servlet.ServletAjoutPlat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletValideCommande</servlet-name>
+        <servlet-class>servlet.ServletValideCommande</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>init</servlet-name>
         <url-pattern>/init</url-pattern>
@@ -64,9 +80,26 @@
         <servlet-name>ServletIngredientPlat</servlet-name>
         <url-pattern>/ServletIngredientPlat</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPlat</servlet-name>
+        <url-pattern>/ServletPlat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCategoriePlat</servlet-name>
+        <url-pattern>/ServletCategoriePlat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAjoutPlat</servlet-name>
+        <url-pattern>/ServletAjoutPlat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletValideCommande</servlet-name>
+        <url-pattern>/ServletValideCommande</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
 </web-app>

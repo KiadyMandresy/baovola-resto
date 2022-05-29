@@ -9,6 +9,7 @@ import connex.Connex;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 
 /**
  *
@@ -87,4 +88,23 @@ public class DetailCommande extends BdTable{
         java.sql.Statement stmt = c.createStatement();
         stmt.executeUpdate(req);
     }
+    
+      public void InsertDetailCommande(int idCommande, int idPlat,int idserv,int qte) throws Exception{
+        Connex c = new Connex();
+        this.setIdCommande(idCommande);
+        this.setIdPlat(idPlat);
+        this.setIdServeur(idserv);
+        this.setQte(qte);
+        this.insertInto(c.getCon());
+    }
+      
+        public Vector getDetail(int idCom) throws Exception{
+        Vector liste = new Vector();
+        Connex con = new Connex();
+        String req = "select * from DetailCommande where idCommande="+idCom;
+        liste = this.findReq(req, this, con.getCon());
+        con.deco();
+        return liste;
+    }  
+   
 }

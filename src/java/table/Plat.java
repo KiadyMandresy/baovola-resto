@@ -79,6 +79,7 @@ public class Plat extends BdTable{
         plat.setIdCategorie(((Plat) li.get(0)).getIdCategorie());
         plat.setDesignation(((Plat) li.get(0)).getDesignation());
         plat.setPrix(((Plat) li.get(0)).getPrix());
+         con.deco();
         return plat;
     }
     

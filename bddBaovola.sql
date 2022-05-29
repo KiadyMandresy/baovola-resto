@@ -103,6 +103,7 @@ Create sequence seqUtilisateur start with 1 increment by 1;
 Create sequence seqMarge start with 1 increment by 1;
 Create sequence seqDetailPlat start with 1 increment by 1;
 Create sequence seqIngredient start with 1 increment by 1;
+Create sequence seqClientCommande start with 1 increment by 1;
 
 CREATE UNIQUE INDEX username ON utilisateur(username);
 

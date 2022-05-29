@@ -66,6 +66,7 @@ public class CategoriePlat extends BdTable{
         CategoriePlat plat = new CategoriePlat();
         Connex con = new Connex();
         Vector val = this.find(plat, con.getCon());
+        con.deco();
         return val;
     }
     

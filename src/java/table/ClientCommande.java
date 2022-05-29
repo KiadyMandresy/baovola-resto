@@ -67,4 +67,11 @@ public class ClientCommande extends BdTable{
         clicom.setIdCommande( ((ClientCommande)li.get(0)).getIdCommande() );
         return clicom;
     }
+    
+    public void InsertClientCommande(int idClient,int idCommande) throws Exception{
+        Connex c = new Connex();
+        this.setIdClient(idClient);
+        this.setIdCommande(idCommande);
+        this.insertInto(c.getCon());
+    }
 }

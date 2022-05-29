@@ -22,11 +22,10 @@ public class Connex
     {
         try{
         getCon().close();
-
         }
-		catch (Exception e1) {
-			e1.printStackTrace();
-		}
+        catch (Exception e1) {
+                e1.printStackTrace();
+        }
     }
     public void setCon(Connection c)
     {
