@@ -45,6 +45,7 @@ Create table detailPlat(
 Create table serveur(
     id INTEGER NOT NULL,
     nom varchar(50),
+    marge double precision,
     primary key(id)
 );
 
@@ -173,3 +174,11 @@ insert into plat values(nextval('seqPlat'),'Van Tan Mine',15000,2);
 insert into detailCommande values(nextval('seqDetailCommande'),1,1,null,2);
 insert into detailCommande values(nextval('seqDetailCommande'),1,2,null,1);
 
+Create view pourboireCommande as 
+    select s.id as idserveur,s.nom as serveur, c.dateCom as date, p.prix * dc.qte as prixTotal, s.marge as margeServeur from commande c
+        join detailCommande dc 
+            ON (c.id=dc.idCommande)
+        join plat p 
+            ON (dc.idPlat=p.id)
+        join serveur s
+            ON (c.idServeur=s.id);

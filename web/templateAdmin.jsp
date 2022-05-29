@@ -323,6 +323,12 @@
               <span class="menu-title">Total payement</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ServletPourboire">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Pourboires par serveur</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->
