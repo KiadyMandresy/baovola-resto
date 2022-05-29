@@ -80,7 +80,7 @@ public class Utilisateur extends BdTable{
     }
     
     public Vector getServeur() throws Exception{
-        String req = "select * from utilisateur where roleUser='Serveur'";
+        String req = "select * from utilisateur where roleUser='serveur'";
         Utilisateur ret = new Utilisateur();
         BdTable bd = new BdTable();
         Connex c = new Connex();

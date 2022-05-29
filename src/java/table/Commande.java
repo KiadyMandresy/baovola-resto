@@ -114,4 +114,31 @@ public class Commande extends BdTable{
         con.deco();
         return rep;
     }
+    
+        
+    public void InsertCommande(int idTable) throws Exception{
+        Connex c = new Connex();
+        this.setIdTable(idTable);
+        this.setStatus(0);
+        this.insertInto(c.getCon());
     }
+    
+      public int getlastId() throws Exception{
+        Commande cat = new Commande();
+        Connex con = new Connex();
+        String req = "select * from commande where id=(select max(id) from commande)";
+        Vector val = this.findReq(req, cat, con.getCon());
+        return ((Commande)val.get(0)).getId();
+    }
+      
+    public void update(int id,int idtable) throws Exception{
+       
+        Commande cat = new Commande();
+        Connex c = new Connex();
+        String req = "update commande set status=1 where id="+id+" and idtable="+idtable;
+        System.out.println(req);
+        java.sql.Statement stmt = c.getCon().createStatement();
+        int ret =stmt.executeUpdate(req);
+      
+     }
+ }

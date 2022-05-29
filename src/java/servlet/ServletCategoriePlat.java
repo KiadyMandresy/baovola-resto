@@ -17,16 +17,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import table.CategoriePlat;
+import table.Commande;
+import table.DetailCommande;
 import table.Latabatra;
-import table.ListePlatCommande;
 import table.Plat;
-import table.Utilisateur;
 
 /**
  *
- * @author ravonirinafitahianarandriamanantena
+ * @author mac
  */
-public class login extends HttpServlet {
+public class ServletCategoriePlat extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,57 +41,30 @@ public class login extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             
-            
-            
-            HttpSession session = request.getSession();
-            String user = request.getParameter("user");
-            String mdp = request.getParameter("mdp");
-            Utilisateur u = new Utilisateur();
-            
-            Utilisateur zao = u.log(user,mdp);
-            
-            if(zao.getRoleUser() == null) response.sendRedirect("login.jsp");
-            
-            if(zao.getRoleUser().compareTo("Cuisine") == 0){
-                ListePlatCommande lpc = new ListePlatCommande();
-                Vector liste = lpc.getListePlatCommande();
-                session.setAttribute("utilisateur",zao);
-                request.setAttribute("liste", liste);
-                RequestDispatcher dispat = request.getRequestDispatcher("/cuisine.jsp");
-                dispat.forward(request,response);
-                System.out.println('1');
-
-            }
-            
-            if(zao.getRoleUser().compareTo("admin") == 0){
-
-                session.setAttribute("utilisateur",zao);
-
-//                request.setAttribute("liste", liste);
-                String view = "accueilAdmin.jsp";
-
-                request.setAttribute("view", view);
-                RequestDispatcher dispat = request.getRequestDispatcher("/templateAdmin.jsp");
-                dispat.forward(request,response);
-                System.out.println('2');
-            }
-            
-            if(zao.getRoleUser().compareTo("serveur")==0){
                 
-                session.setAttribute("utilisateur",zao);
+                CategoriePlat cp = new CategoriePlat();
+                Vector v = cp.getCategorie();
+                request.setAttribute("listeCategorie", v);
                 
+                int idCat = new Integer(request.getParameter("cat"));
+                Plat p = new Plat();
+                Vector plat = p.platsCategorie(idCat);
+                request.setAttribute("listePlat", plat);
+                                
                 Latabatra l = new Latabatra();
                 Vector latv = l.getLatatbatraDispo();
-                request.setAttribute("listelatabatra", latv);
+                request.setAttribute("listelatabatra", latv);   
                 
-                String view  = "choixdeTable.jsp";
+                Commande c = new Commande();
+                DetailCommande dc = new DetailCommande();
+                Vector listeDetail = dc.getDetail(c.getlastId());
+                request.setAttribute("listeDetail", listeDetail);
+              
+                String view  = "accueil.jsp";
                 request.setAttribute("view",view);
                 RequestDispatcher dispat = request.getRequestDispatcher("/template.jsp");
                 dispat.forward(request,response);
-                
-            }
         }
     }
 
@@ -110,7 +83,7 @@ public class login extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletCategoriePlat.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -128,7 +101,7 @@ public class login extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletCategoriePlat.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

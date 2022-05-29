@@ -61,5 +61,13 @@ public class CategoriePlat extends BdTable{
         con.deco();
         return ((CategoriePlat)val.get(0)).getDesignation();
     }
+
+    public Vector getCategorie() throws Exception {
+        CategoriePlat plat = new CategoriePlat();
+        Connex con = new Connex();
+        Vector val = this.find(plat, con.getCon());
+        con.deco();
+        return val;
+    }
     
 }
