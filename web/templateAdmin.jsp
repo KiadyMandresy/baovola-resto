@@ -329,6 +329,12 @@
               <span class="menu-title">Pourboires par serveur</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ServletFaireInventaire">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Faire un inventaire</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->

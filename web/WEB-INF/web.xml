@@ -44,6 +44,10 @@
         <servlet-name>ServletPourboire</servlet-name>
         <servlet-class>servlet.ServletPourboire</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletFaireInventaire</servlet-name>
+        <servlet-class>servlet.ServletFaireInventaire</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>init</servlet-name>
         <url-pattern>/init</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>ServletPourboire</servlet-name>
         <url-pattern>/ServletPourboire</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletFaireInventaire</servlet-name>
+        <url-pattern>/ServletFaireInventaire</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

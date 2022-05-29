@@ -126,6 +126,24 @@ create table detailPayement(
     foreign key(idTypepayement) REFERENCES typePayement(id)
 );
 
+create table inventaire(
+    id INTEGER NOT NULL,
+    idIngredient int,
+    qte int,
+    date timestamp,
+    primary key(id)
+);
+
+create table stockIngredient(
+    id INTEGER NOT NULL,
+    idIngredient int,
+    entree double precision,
+    sortie double precision,
+    date timestamp,
+    primary key(id),
+    foreign key(idIngredient) REFERENCES ingredient(id)
+);
+
 Create sequence seqLatabatra start with 1 increment by 1;
 Create sequence seqCategoriePlat start with 1 increment by 1;
 Create sequence seqPlat start with 1 increment by 1;
@@ -140,6 +158,8 @@ Create sequence seqPayement start with 1 increment by 1;
 Create sequence seqTypePayement start with 1 increment by 1;
 Create sequence seqDetailPayement start with 1 increment by 1;
 Create sequence seqServeur start with 1 increment by 1;
+Create sequence seqInventaire start with 1 increment by 1;
+Create sequence seqStockIngredient start with 1 increment by 1;
 
 CREATE UNIQUE INDEX username ON utilisateur(username);
 

@@ -77,5 +77,12 @@ public class Ingredient extends BdTable{
         this.unite = unite;
     }
     
+    public Vector getAllIngredient() throws Exception{
+        Vector liste = new Vector();
+        Connex con = new Connex();
+        liste = this.find(this, con.getCon());
+        con.deco();
+        return liste;
+    }
     
 }
