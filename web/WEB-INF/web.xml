@@ -48,6 +48,10 @@
         <servlet-name>ServletFaireInventaire</servlet-name>
         <servlet-class>servlet.ServletFaireInventaire</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletFaireAchatIngredient</servlet-name>
+        <servlet-class>servlet.ServletFaireAchatIngredient</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>init</servlet-name>
         <url-pattern>/init</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>ServletFaireInventaire</servlet-name>
         <url-pattern>/ServletFaireInventaire</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletFaireAchatIngredient</servlet-name>
+        <url-pattern>/ServletFaireAchatIngredient</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
