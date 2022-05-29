@@ -341,7 +341,6 @@
               <span class="menu-title">Achat ingredient</span>
             </a>
           </li>
-          
         </ul>
       </nav>
       <!-- partial -->
