@@ -10,7 +10,7 @@ public class Connex
             Class.forName("org.postgresql.Driver");
             String url = "jdbc:postgresql://localhost:5432/sakafo";
             String user= "postgres";
-            String mdp = "Nomena12";
+            String mdp = "kalisi61";
             Connection conn = DriverManager.getConnection(url, user, mdp);
             setCon(conn);
         }
@@ -22,11 +22,10 @@ public class Connex
     {
         try{
         getCon().close();
-
         }
-		catch (Exception e1) {
-			e1.printStackTrace();
-		}
+        catch (Exception e1) {
+                e1.printStackTrace();
+        }
     }
     public void setCon(Connection c)
     {

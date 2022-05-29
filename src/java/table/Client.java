@@ -65,4 +65,23 @@ public class Client extends BdTable{
         Client cli = this.getClient(clicom.getIdClient());
         return cli;
     }
+    
+      public void InsertClient(String nom) throws Exception{
+        Connex c = new Connex();
+        this.setNom(nom);
+        this.insertInto(c.getCon());
+    }
+      
+    public Client getClientwithNom(String nom) throws Exception{
+        Client Cli = new Client();
+        Connex con = new Connex();
+        String req = "select * from client where nom='"+nom+"'";
+        Vector li = Cli.findReq(req, Cli, con.getCon());
+        Cli.setId( ((Client) li.get(0)).getId());
+        Cli.setNom(((Client) li.get(0)).getNom());
+   
+         con.deco();
+        return Cli;
+    }
+    
 }
