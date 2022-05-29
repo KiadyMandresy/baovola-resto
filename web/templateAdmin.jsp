@@ -335,6 +335,13 @@
               <span class="menu-title">Faire un inventaire</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ServletFaireAchatIngredient">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Achat ingredient</span>
+            </a>
+          </li>
+          
         </ul>
       </nav>
       <!-- partial -->

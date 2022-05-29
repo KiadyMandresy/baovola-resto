@@ -85,4 +85,14 @@ public class Ingredient extends BdTable{
         return liste;
     }
     
+    public Ingredient getIngredient(int id) throws Exception{
+        Ingredient ingr = new Ingredient();
+        Connex con = new Connex();
+        String req = "select * from ingredient where id="+id;
+        Vector liste = ingr.findReq(req, ingr, con.getCon());
+        ingr = ((Ingredient)liste.get(0));
+        con.deco();
+        return ingr;
+    }
+    
 }
