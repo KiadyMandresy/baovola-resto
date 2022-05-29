@@ -54,7 +54,7 @@ public class ServletAjoutPlat extends HttpServlet {
                 request.setAttribute("listeCategorie", v);
                 
                 Plat p = new Plat();
-                Vector plat = p.plats();
+                Vector plat = p.getAllPlats();
                 request.setAttribute("listePlat", plat);
                 
                 

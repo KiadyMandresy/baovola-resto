@@ -49,7 +49,7 @@ public class ServletCategoriePlat extends HttpServlet {
                 
                 int idCat = new Integer(request.getParameter("cat"));
                 Plat p = new Plat();
-                Vector plat = p.platsCategorie(idCat);
+                Vector plat = p.getPlatsByCat(idCat);
                 request.setAttribute("listePlat", plat);
                                 
                 Latabatra l = new Latabatra();
