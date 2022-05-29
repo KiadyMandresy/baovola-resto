@@ -1,5 +1,14 @@
 Create database sakafo;
 \c sakafo
+
+Create table utilisateur(
+    id INTEGER NOT NULL,
+    username VARCHAR(255),
+    password VARCHAR(255),
+    roleUser VARCHAR(50),
+    primary key(id)
+);
+
 Create table latabatra(
     id INTEGER NOT NULL,
     numero VARCHAR(40),
@@ -86,14 +95,6 @@ Create table clientCommande(
     foreign key(idCommande) REFERENCES commande(id)
 ); 
 
-Create table utilisateur(
-    id INTEGER NOT NULL,
-    username VARCHAR(255),
-    password VARCHAR(255),
-    roleUser VARCHAR(50),
-    primary key(id)
-);
-
 create table marge(
     id Integer NOT NULL,
     prixMin double precision,
@@ -164,7 +165,7 @@ Create sequence seqStockIngredient start with 1 increment by 1;
 CREATE UNIQUE INDEX username ON utilisateur(username);
 
 
-CREATE VIEW ingredientPlat as select d.qte as quantite,idPlat,i.nom as ingredient,i.prix as prix,i.unite as unite from detailPlat as d JOIN ingredient as i ON (d.idIngredient=i.id);
+CREATE VIEW ingredientPlat as select d.qte as quantite,idPlat,i.nom as ingredient,i.prix as prix,i.unite as unite,i.id as idIngredient from detailPlat as d JOIN ingredient as i ON (d.idIngredient=i.id);
 
 CREATE VIEW vuePayement AS SELECT t.numero AS numerotable,
     tp.nom AS typepayement,
@@ -175,9 +176,7 @@ CREATE VIEW vuePayement AS SELECT t.numero AS numerotable,
      JOIN typepayement tp ON tp.id = dp.idtypepayement
      JOIN latabatra t ON t.id = p.idtable;
 
-CREATE VIEW ingredientPlat as select d.qte as quantite,idPlat,i.nom as ingredient,i.prix as prix,i.unite as unite from detailPlat as d JOIN ingredient as i ON (d.idIngredient=i.id);
-
-CREATE view listePlatCommande as select p.designation,c.datecom as date,d.id,d.qte as quantite from detailCommande as d JOIN commande as c ON (d.idCommande=c.id) JOIN plat as p ON (d.idPlat=p.id) where d.idServeur is null and c.status=1 order by d.id;
+CREATE view listePlatCommande as select p.designation,c.datecom as date,d.id,d.qte as quantite,p.id as idPlat from detailCommande as d JOIN commande as c ON (d.idCommande=c.id) JOIN plat as p ON (d.idPlat=p.id) where d.idServeur is null and c.status=1 order by d.id;
 
 insert into utilisateur values(nextval('seqUtilisateur'),'Kiady','kiady','serveur');
 insert into utilisateur values(nextval('seqUtilisateur'),'ravo','ravo','Cuisine');

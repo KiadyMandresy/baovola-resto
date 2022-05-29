@@ -19,20 +19,24 @@ public class IngredientPlat extends BdTable {
     String ingredient;
     double prix;
     String unite;
+    int idIngredient;
     
     public IngredientPlat constructeur(ResultSet res)throws Exception
     {
-        IngredientPlat j=new IngredientPlat(res.getDouble(1),res.getInt(2),res.getString(3),res.getDouble(4), res.getString(5));
+        IngredientPlat j=new IngredientPlat(res.getDouble(1),res.getInt(2),res.getString(3),res.getDouble(4), res.getString(5),res.getInt(6));
         return j;
     } 
 
-    public IngredientPlat(double quantite, int idplat, String ingredient, double prix, String unite) {
+    public IngredientPlat(double quantite, int idplat, String ingredient, double prix, String unite, int idIngredient) {
         this.quantite = quantite;
         this.idplat = idplat;
         this.ingredient = ingredient;
         this.prix = prix;
         this.unite = unite;
+        this.idIngredient = idIngredient;
     }
+
+    
 
     public IngredientPlat() {
     }
@@ -75,6 +79,14 @@ public class IngredientPlat extends BdTable {
 
     public void setUnite(String unite) {
         this.unite = unite;
+    }
+
+    public int getIdIngredient() {
+        return idIngredient;
+    }
+
+    public void setIdIngredient(int idIngredient) {
+        this.idIngredient = idIngredient;
     }
     
     public Vector getIngredientPlat(int idplat) throws Exception{

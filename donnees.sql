@@ -16,6 +16,8 @@ insert into commande values(3, '2022-05-26 11:12:00', 1, 3,1);
 insert into commande values(4, '2022-05-26 11:12:00', 1, 4,1);
 insert into commande values(5, '2022-05-26 11:12:00', 1, 5,1);
 
+insert into commande values(nextval('seqCommande'),'2022-05-26 17:10:40.169059+03',1,1,1);
+
 insert into categoriePlat values(1, 'dessert');
 
 insert into plat values(1, 'tarte', 3500, 1);
@@ -35,6 +37,10 @@ insert into detailPlat values(2, 1, 2, 0.5, 'kg');
 insert into detailCommande values(1, 3, 1, 1);
 insert into detailCommande values(2, 4, 1, 2);
 insert into detailCommande values(3, 5, 1, 3);
+
+insert into detailCommande values(nextval('seqDetailCommande'),1,1,null,2);
+insert into detailCommande values(nextval('seqDetailCommande'),1,2,null,1);
+insert into detailCommande values(nextval('seqDetailCommande'),1,1,null,2);
 
 insert into client values(1, 'Ravo');
 insert into client values(2, 'Nomena');

@@ -20,18 +20,22 @@ public class ListePlatCommande extends BdTable{
     Timestamp date;
     int id;
     int quantite;
+    int idPlat;
 
     public ListePlatCommande constructeur(ResultSet res) throws SQLException{
-        ListePlatCommande lpc = new ListePlatCommande(res.getString(1),res.getTimestamp(2),res.getInt(3),res.getInt(4));
+        ListePlatCommande lpc = new ListePlatCommande(res.getString(1),res.getTimestamp(2),res.getInt(3),res.getInt(4),res.getInt(5));
         return lpc;
     }
 
-    public ListePlatCommande(String designation, Timestamp date, int id, int quantite) {
+    public ListePlatCommande(String designation, Timestamp date, int id, int quantite, int idPlat) {
         this.designation = designation;
         this.date = date;
         this.id = id;
         this.quantite = quantite;
+        this.idPlat = idPlat;
     }
+
+    
 
     public ListePlatCommande() {
     }
@@ -66,6 +70,14 @@ public class ListePlatCommande extends BdTable{
 
     public void setQuantite(int quantite) {
         this.quantite = quantite;
+    }
+
+    public int getIdPlat() {
+        return idPlat;
+    }
+
+    public void setIdPlat(int idPlat) {
+        this.idPlat = idPlat;
     }
     
     public Vector getListePlatCommande() throws Exception{

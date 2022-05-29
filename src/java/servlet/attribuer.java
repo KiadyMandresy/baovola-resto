@@ -17,7 +17,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import table.DetailCommande;
+import table.IngredientPlat;
 import table.ListePlatCommande;
+import table.StockIngredient;
 
 /**
  *
@@ -39,12 +41,25 @@ public class attribuer extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            StockIngredient si = new StockIngredient();
+            IngredientPlat ip = new IngredientPlat();
             DetailCommande dc = new DetailCommande();
             String idS = (String)request.getParameter("serveur");
             String idD = (String)request.getParameter("id");
+            String idP = (String)request.getParameter("idPlat");
+            String q = (String)request.getParameter("qte");
             int idServeur = new Integer(idS);
             int idDet = new Integer(idD);
+            int idPlat = new Integer(idP);
+            int qte = new Integer(q);
             dc.attribuerServeur(idDet, idServeur);
+            Vector ing = ip.getIngredientPlat(idPlat);
+            for(int i=0;i<ing.size();i++){
+                IngredientPlat inp = (IngredientPlat)(ing.get(i));
+                double quantite = inp.getQuantite()*qte;
+                si.sortie(inp.getIdIngredient(), quantite);
+            }
+            
             ListePlatCommande lpc = new ListePlatCommande();
             Vector liste = lpc.getListePlatCommande();
             request.setAttribute("liste", liste);
