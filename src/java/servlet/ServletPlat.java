@@ -20,6 +20,8 @@ import table.CategoriePlat;
 import table.Commande;
 import table.DetailCommande;
 import table.Plat;
+import table.Serveur;
+import table.Utilisateur;
 
 /**
  *
@@ -45,7 +47,9 @@ public class ServletPlat extends HttpServlet {
                 int idTable = new Integer(request.getParameter("latabatra"));
                 session.setAttribute("latabatra", idTable);
                 Commande c= new Commande();
-                c.InsertCommande(idTable);
+                int idutil = ((Utilisateur)session.getAttribute("utilisateur")).getId();
+                Serveur ss = new Serveur();       
+                c.InsertCommande(idTable,ss.getServeur(idutil).getId());
                 
                 CategoriePlat cp = new CategoriePlat();
                 Vector v = cp.getCategorie();
