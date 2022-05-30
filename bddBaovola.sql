@@ -164,6 +164,7 @@ Create sequence seqServeur start with 1 increment by 1;
 Create sequence seqInventaire start with 1 increment by 1;
 Create sequence seqStockIngredient start with 1 increment by 1;
 Create sequence seqClientCommande start with 1 increment by 1;
+Create sequence seqTable start with 1 increment by 1;
 
 CREATE UNIQUE INDEX username ON utilisateur(username);
 

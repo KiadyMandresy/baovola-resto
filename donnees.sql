@@ -1,5 +1,8 @@
 
-insert into utilisateur values(1, 'dawood', '1234', 'admin');
+insert into utilisateur values(nextval('seqUtilisateur'),'Kiady','kiady','serveur');
+insert into utilisateur values(nextval('seqUtilisateur'),'ravo','ravo','Cuisine');
+insert into utilisateur values(nextval('seqUtilisateur'),'Dawood','qwerty','admin');
+
 
 insert into latabatra values(nextval('seqTable'), 'Table 1', 0);
 insert into latabatra values(nextval('seqTable'), 'Table 2', 0);
@@ -7,7 +10,7 @@ insert into latabatra values(nextval('seqTable'), 'Table 3', 0);
 insert into latabatra values(nextval('seqTable'), 'Table 4', 0);
 insert into latabatra values(nextval('seqTable'), 'Table 5', 0);
 
-insert into serveur values(nextval('seqServeur'), 'Jean', 0.02);
+insert into serveur values(nextval('seqServeur'), 'Kiady', 0.02,1);
 
 insert into commande values(nextval('seqCommande'), '2022-05-26 11:12:00', 0, 1,1);
 insert into commande values(nextval('seqCommande'), '2022-05-26 11:12:00', 0, 2,1);
