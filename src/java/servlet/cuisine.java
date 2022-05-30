@@ -50,7 +50,9 @@ public class cuisine extends HttpServlet {
             request.setAttribute("liste", liste);
             request.setAttribute("plat", plat);
             request.setAttribute("serveur", serveur);
-            RequestDispatcher dispat = request.getRequestDispatcher("/cuisine.jsp");
+            String view = "cuisine.jsp";
+            request.setAttribute("view", view);
+            RequestDispatcher dispat = request.getRequestDispatcher("/template.jsp");
             dispat.forward(request,response);
         }
     }

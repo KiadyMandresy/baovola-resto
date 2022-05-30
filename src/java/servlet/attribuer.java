@@ -63,7 +63,9 @@ public class attribuer extends HttpServlet {
             ListePlatCommande lpc = new ListePlatCommande();
             Vector liste = lpc.getListePlatCommande();
             request.setAttribute("liste", liste);
-            RequestDispatcher dispat = request.getRequestDispatcher("/cuisine.jsp");
+            String view = "cuisine.jsp";
+            request.setAttribute("view", view);
+            RequestDispatcher dispat = request.getRequestDispatcher("/template.jsp");
             dispat.forward(request,response);
         }
     }

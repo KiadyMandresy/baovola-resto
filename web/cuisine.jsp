@@ -16,20 +16,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="contentassets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-        <link rel="stylesheet" href="contentassets/vendors/ti-icons/css/themify-icons.css">
-        <link rel="stylesheet" type="text/css" href="contentassets/js/select.dataTables.min.css">
         <title>Cuisine</title>
     </head>
     <body>
     <center>
         <div style="float:left;margin-left: 15%;">
-            <h1>Cuisine - Plat à preparer</h1>
+            <h4>Cuisine - Plat à preparer</h4>
             </br>
             <form action="filtrer" nethod="post">
                 <p>
-                    <input type="date" name="date1"/>
-                    <input type="date" name="date2"/>
+                    <input type="datetime-local" name="date1"/>
+                    <input type="datetime-local" name="date2"/>
                     <div class="mt-3">
                         <input class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit"/>
                     </div>
@@ -64,8 +61,8 @@
             ListePlatCommande l = (ListePlatCommande)(plat.get(0));
             Vector serveur = (Vector)request.getAttribute("serveur");
         %>
-        <div style="float:right;margin-right: 15%; border: medium solid #000000;">
-            <p><h1>Plat : <% out.println(l.getDesignation()); %></h1></p>
+        <div style="float:right;margin-right: 15%;">
+            <p><h4>Plat : <% out.println(l.getDesignation()); %></h4></p>
             </br>
             </br>
             <form action="attribuer" method="post">

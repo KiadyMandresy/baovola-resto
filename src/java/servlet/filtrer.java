@@ -42,7 +42,9 @@ public class filtrer extends HttpServlet {
             ListePlatCommande lpc = new ListePlatCommande();
             Vector liste = lpc.getListeByDate(date1, date2);
             request.setAttribute("liste", liste);
-            RequestDispatcher dispat = request.getRequestDispatcher("/cuisine.jsp");
+            String view = "cuisine.jsp";
+            request.setAttribute("view", view);
+            RequestDispatcher dispat = request.getRequestDispatcher("/template.jsp");
             dispat.forward(request,response);
         }
     }

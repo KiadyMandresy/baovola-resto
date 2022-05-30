@@ -1,0 +1,194 @@
+BdTable
+CategoriePlat
+    int id;
+    String designation;
+    {
+        Vector getAllCategorie()
+        String getCatById(int id)
+    }
+Client
+    int id;
+    String nom;
+    {
+        Client getClient(int id)
+        Client getClientByCom(int idcommande)
+        void InsertClient(String nom)
+        Client getClientwithNom(String nom)
+    }
+ClientCommande
+    int id;
+    int idClient;
+    int idCommande;
+    {
+        ClientCommande getClientCommande(int idcommande)
+        void InsertClientCommande(int idClient,int idCommande)
+    }
+Commande
+    int id;
+    Timestamp dateCom;
+    int status;
+    int idTable;
+    int idServeur;
+    {
+        Vector getCommandesValide()
+        Vector getDetailCommande(int idcommande)
+        Commande getCommande(int idcommande)
+        void InsertCommande(int idTable)
+        int getlastId()
+        void update(int id,int idtable)
+    }
+DetailCommande
+    int id;
+    int idCommande;
+    int idPlat;
+    int idServeur;
+    int qte;
+    {
+        void attribuerServeur(int id,int idServeur)
+        void InsertDetailCommande(int idCommande,int idPlat,int idserv,int qte)
+        Vector getDetail(int idCom)
+    }
+DetailPayement
+    int id;
+    int idPayement;
+    int idTypePayement;
+    double montant;
+DetailPlat
+    int id;
+    int idPlat;
+    int idIngredient;
+    int qte;
+    String unite;
+Ingredient
+    int id;
+    String nom;
+    double prix;
+    int qte;
+    String unite;
+    {
+        Vector getAllIngredient()
+        Ingredient getIngredient(int id)
+    }
+IngredientConso
+    String ingredient;
+    int quantite;
+    double prix; 
+    {
+        Vector getIngredient(String date1,String date2)
+        double getTotal(Vector liste)
+    }
+IngredientPlat
+    double quantite;
+    int idplat;
+    String ingredient;
+    double prix;
+    String unite;
+    int idIngredient;
+    {
+        Vector getIngredientPlat(int idplat)
+        double getPrixRev()
+        double getSommePrixRev(int id)
+        double getPrixVente(int id)
+    }
+Inventaire
+    int id;
+    int idIngredient;
+    int qte;
+    Timestamp date;
+    {
+        void insertInventaire(int idIngr, int qte)
+    }
+Latabatra
+    int id;
+    String numero ;
+    int isTaken;
+    {
+        Latabatra getLatabatra(int idlatabatra)
+        Vector getAllLatabatra()
+        Vector getFreeLatabatra()
+    }
+ListePlatCommande
+    String designation;
+    Timestamp date;
+    int id;
+    int quantite;
+    int idPlat;
+    {
+        Vector getListePlatCommande()
+        Vector getListePlatCommandeById(int id)
+        Vector getListeByDate(String date1,String date2)
+    }
+Marge
+    int id;
+    double prixMin;
+    double prixMax;
+    double pourcentage;
+    {
+        Vector getMarge()
+    }
+Payement
+    int id;
+    int idTable;
+    Timestamp date;
+Plat
+    int id ;
+    String designation ;
+    double prix ;
+    int idCategorie ;
+    {
+        Plat getPlat(int idplat)
+        Vector getAllPlats()
+        Vector recherchePlat(String mot)
+        Vector getPlatsByCat(int idcat)
+    }
+Pourboire
+    String nom;
+    double pourboire;
+    {
+        Vector pourboire(String d1, String d2)
+    }
+ResteIngredient
+    int idIngredient;
+    double reste;
+    {
+        double resteIngredient(int idIngredient)
+    }
+Serveur
+    int id;
+    String nom;
+    double marge;
+    int idUtilisateur;
+    {
+        Serveur getServeur(int idUtil)
+    }
+StockIngredient
+    int id;
+    int idIngredient;
+    double entree;
+    double sortie;
+    Timestamp date;
+    {
+        void entree(int idingredient, double qte)
+        void sortie(int idIngredient, double qte)
+    }
+TypePayement
+    int id;
+    String nom;
+Utilisateur
+    int id;
+    String usernamde;
+    String password;
+    String roleUser;
+    {
+        Utilisateur log(String user,String mdp)
+        Vector getServeur()
+    }
+VuePayement
+    String numeroTable;
+    String typePayement;
+    double montant;
+    Timestamp daty;
+    {
+        Vector getListPayement(String date1, String date2)
+        double total(vector liste)
+    }

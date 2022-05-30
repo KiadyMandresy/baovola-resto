@@ -59,7 +59,9 @@ public class login extends HttpServlet {
                 Vector liste = lpc.getListePlatCommande();
                 session.setAttribute("utilisateur",zao);
                 request.setAttribute("liste", liste);
-                RequestDispatcher dispat = request.getRequestDispatcher("/cuisine.jsp");
+                String view = "cuisine.jsp";
+                request.setAttribute("view", view);
+                RequestDispatcher dispat = request.getRequestDispatcher("/template.jsp");
                 dispat.forward(request,response);
                 System.out.println('1');
 
