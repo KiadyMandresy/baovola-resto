@@ -66,9 +66,6 @@
                       <tbody>
                          <% for(int i=0; i<liste.size(); i++) { %>
                         <tr>
-                            <form>
-                                <th><input type="submit" value="Modifier Produit"></th>
-                            </form>
                             <form class="form-inline" action="ServletIngredientPlat" method="post">
                                 <input type="hidden" value="<%=((Plat)liste.get(i)).getId()%>" name="idplat">
                                 <input type="hidden" value="<%= ((Plat)liste.get(i)).getDesignation()%>" name="nom">
@@ -77,6 +74,10 @@
                                 <th><% out.println( cat.getCatById( ((Plat)liste.get(i)).getIdCategorie() )) ; %></th>
                                 <th><% out.println(((Plat)liste.get(i)).getPrix() ); %></th>
                                 <th><button type="submit" class="btn btn-secondary">Voir ingredient</button></th>
+                            </form>
+                            <form action="ServletModifierPlat" method="post">
+                                <input type="hidden" value="<%=((Plat)liste.get(i)).getId()%>" name="idplat">
+                                <th><input type="submit" value="Modifier Produit" class="btn btn-light"></th>
                             </form>
                             <form action="ServletModifier" method="post">
                                 <input type="hidden" name="idplat" value="<%=((Plat)liste.get(i)).getId()%>">

@@ -137,5 +137,16 @@ public class Plat extends BdTable{
         plat.deleteInto(con.getCon());
         con.deco();
     }
+    
+    public void update(int id, String desi, double prix, int idcategorie ) throws Exception{
+        Plat plat = new Plat();
+        Connex con = new Connex();
+        plat.setId(id);
+        plat.setDesignation(desi);
+        plat.setPrix(prix);
+        plat.setIdCategorie(idcategorie);
+        plat.updateTo(con.getCon());
+        con.deco();
+    }
 
 }

@@ -29,8 +29,8 @@
                     <table class="table">
                       <thead>
                         <th>Ingredient</th>
-                        <th>unite</th>
                         <th>quantite</th>
+                        <th>unite</th>
                         <th>Prix </th>
                       </thead>
                       <tbody>

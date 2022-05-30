@@ -341,6 +341,12 @@
               <span class="menu-title">Achat ingredient</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ServletStockIngredient">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Etat de stock</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->
