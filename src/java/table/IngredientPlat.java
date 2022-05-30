@@ -99,7 +99,7 @@ public class IngredientPlat extends BdTable {
     }
     public double getPrixRev(){
         double val = 0;
-        val = (this.prix*this.quantite)/1000;
+        val = (this.prix*this.quantite);
         return val;
     }
     public double getSommePrixRev(int id) throws Exception{

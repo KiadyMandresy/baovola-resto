@@ -76,6 +76,22 @@
         <servlet-name>ServletAjoutIngredient</servlet-name>
         <servlet-class>servlet.ServletAjoutIngredient</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletModifier</servlet-name>
+        <servlet-class>servlet.ServletModifier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletModifierPlat</servlet-name>
+        <servlet-class>servlet.ServletModifierPlat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletEtatDeStock</servlet-name>
+        <servlet-class>servlet.ServletEtatDeStock</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletStockIngredient</servlet-name>
+        <servlet-class>servlet.ServletStockIngredient</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>init</servlet-name>
         <url-pattern>/init</url-pattern>
@@ -151,6 +167,22 @@
     <servlet-mapping>
         <servlet-name>ServletAjoutIngredient</servlet-name>
         <url-pattern>/ServletAjoutIngredient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletModifier</servlet-name>
+        <url-pattern>/ServletModifier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletModifierPlat</servlet-name>
+        <url-pattern>/ServletModifierPlat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEtatDeStock</servlet-name>
+        <url-pattern>/ServletEtatDeStock</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletStockIngredient</servlet-name>
+        <url-pattern>/ServletStockIngredient</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

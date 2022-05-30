@@ -172,6 +172,10 @@ public class BdTable {
             String req="update "+getClass().getSimpleName()+" set ";
                 for(int i=0;i<attr.size()-1;i++)
                 {
+                    if(fl[i].getType().getName().equals("java.lang.String")==true )
+                    {
+                        req+=fl[i].getName()+"='"+attr.get(i).getClass().cast(attr.get(i))+"',";
+                    } 
                     if(fl[i].getType().getName().equals("int")==true || fl[i].getType().getName().equals("double")==true)
                     {
                         req+=fl[i].getName()+"="+attr.get(i).getClass().cast(attr.get(i))+",";
@@ -179,18 +183,18 @@ public class BdTable {
                     if(fl[i].getType().getName().equals("java.sql.Timestamp")==true){
                         req+=fl[i].getName()+"=(SELECT convert(datetime, '"+attr.get(i).getClass().cast(attr.get(i))+"', 121)),";
                     }
-                    else  req+=fl[i].getName()+"='"+attr.get(i).getClass().cast(attr.get(i))+"',";
                 }
-                
+                if(fl[attr.size()-1].getType().getName().equals("java.lang.String")==true )
+                {
+                    req+=fl[attr.size()-1].getName()+"='"+attr.get(attr.size()-1).getClass().cast(attr.get(attr.size()-1))+"',";
+                } 
                 if(fl[attr.size()-1].getType().getName().equals("int")==true || fl[attr.size()-1].getType().getName().equals("double")==true)
                 {
                     req+=fl[attr.size()-1].getName()+"="+attr.get(attr.size()-1).getClass().cast(attr.get(attr.size()-1));
                 } 
                 if(fl[attr.size()-1].getType().getName().equals("java.sql.Timestamp")==true){
                         req+=fl[attr.size()-1].getName()+"=(SELECT convert(datetime, '"+attr.get(attr.size()-1).getClass().cast(attr.get(attr.size()-1))+"', 121))";
-                }else {
-                    req+=fl[attr.size()-1].getName()+"='"+attr.get(attr.size()-1).getClass().cast(attr.get(attr.size()-1))+"'";
-                } 
+                }
                 req+=" where "+nameRef+"='"+valRef.getClass().cast(valRef)+"'";
             System.out.println(req);
             java.sql.Statement stmt = c.createStatement();
@@ -271,7 +275,7 @@ public class BdTable {
                 req+=" where ";
                 for(int i=0;i<fl.length;i++)
                 {
-                    if(fl[i].getType().getName().equals("String")==true)
+                    if(fl[i].getType().getName().equals("java.lang.String")==true)
                     {
                         req+=fl[i].getName()+"='"+filtre.mitadyMeth(fl[i]).invoke(filtre).getClass().cast(filtre.mitadyMeth(fl[i]).invoke(filtre))+"' and ";
                     }
@@ -281,7 +285,7 @@ public class BdTable {
                     }
                       
                 }
-                if(fl[fl.length-1].getType().getName().equals("String")==true)
+                if(fl[fl.length-1].getType().getName().equals("java.lang.String")==true)
                 {
                     req+=fl[fl.length-1].getName()+"='"+filtre.mitadyMeth(fl[fl.length-1]).invoke(filtre).getClass().cast(filtre.mitadyMeth(fl[fl.length-1]).invoke(filtre))+"'";
                 }

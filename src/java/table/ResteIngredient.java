@@ -58,4 +58,10 @@ public class ResteIngredient extends BdTable{
         return rep;
     }
     
+    public Vector all() throws Exception{
+        Connex con = new Connex();
+        Vector liste = this.find(this,con.getCon());
+        con.deco();
+        return liste;
+    }
 }
