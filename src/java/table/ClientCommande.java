@@ -62,7 +62,7 @@ public class ClientCommande extends BdTable{
         Connex con = new Connex();
         String req = "select * from clientCommande where idcommande="+idcommande;
         Vector li = clicom.findReq(req, clicom, con.getCon());
-        clicom.setId( ((ClientCommande)li.get(0)).getId() );
+        clicom.setId( ((ClientCommande)(li.get(0))).getId() );
         clicom.setIdClient( ((ClientCommande)li.get(0)).getIdClient() );
         clicom.setIdCommande( ((ClientCommande)li.get(0)).getIdCommande() );
         return clicom;

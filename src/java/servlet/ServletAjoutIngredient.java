@@ -15,15 +15,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import table.CategoriePlat;
 import table.DetailPlat;
-import table.Plat;
+import table.Ingredient;
 
 /**
  *
  * @author Dawood
  */
-public class ServletListePlat extends HttpServlet {
+public class ServletAjoutIngredient extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,40 +38,41 @@ public class ServletListePlat extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            Plat plat = new Plat();
-            CategoriePlat catplat= new CategoriePlat();
-            Vector liste = new Vector();
-            Vector categorie = catplat.getAllCategorie();
-            
-            if(request.getParameter("suppr")!=null){
-                int idplat = new Integer(request.getParameter("suppr"));
                 DetailPlat dp = new DetailPlat();
-                Vector detailplat = dp.getDetailPlatByPlat(idplat);
-                for(int i=0;i<detailplat.size();i++){
-                    dp.supprimerDetailPlat( ((DetailPlat)detailplat.get(i)).getId() );
+                Ingredient ig = new Ingredient();
+                Vector liste = ig.getAllIngredient();
+                Vector listeDetailPlat = new Vector();
+                String message = null;
+            
+            if(request.getParameter("idDetail")!=null && request.getParameter("plat")!=null ){
+                dp.supprimerDetailPlat(new Integer(request.getParameter("idDetail")));
+                listeDetailPlat = dp.getDetailPlatByPlat(new Integer(request.getParameter("plat")));
+                message = "Ingredient supprime";
+                request.setAttribute("idplat", new Integer(request.getParameter("plat")));
+            }else{
+                int idplat = new Integer(request.getParameter("idplat"));
+                int idingredient = new Integer(request.getParameter("idingredient"));
+                double qte = new Double(request.getParameter("qte"));
+                String unite = request.getParameter("unite");
+
+                 try{
+                message = "Ajout ingredient reussi";
+                    dp.insertDetailPlat(idplat, idingredient, qte, unite);
+                    listeDetailPlat = dp.getDetailPlatByPlat(idplat);
+                }catch(Exception ex){
+                    message = "Ajout ingredient a echoue";
                 }
-                plat.deletePlat(idplat);
-                liste = plat.getAllPlats();
+                request.setAttribute("idplat", idplat);
             }
-            if(request.getParameter("cat")!=null){
-                int idcat = new Integer(request.getParameter("cat"));
-                liste = plat.getPlatsByCat(idcat);
-            }
-            else if(request.getParameter("rech")!=null){
-                String mot = request.getParameter("rech");
-                liste = plat.recherchePlat(mot);
-            }
-            else{
-                liste = plat.getAllPlats();
-            }
-            
-            request.setAttribute("liste", liste);
-            request.setAttribute("cat", categorie);
-            
-            String view = "listeplat.jsp";
-            request.setAttribute("view",view);
-            RequestDispatcher dispat = request.getRequestDispatcher("/templateAdmin.jsp");
-            dispat.forward(request,response);
+           
+                request.setAttribute("detailplat", listeDetailPlat);
+                request.setAttribute("ingredient", liste);
+                request.setAttribute("message", message);
+
+                String view = "ajoutingredient.jsp";
+                request.setAttribute("view",view);
+                RequestDispatcher dispat = request.getRequestDispatcher("/templateAdmin.jsp");
+                dispat.forward(request,response);
         }
     }
 
@@ -91,7 +91,7 @@ public class ServletListePlat extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletListePlat.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletAjoutIngredient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -109,7 +109,7 @@ public class ServletListePlat extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletListePlat.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletAjoutIngredient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

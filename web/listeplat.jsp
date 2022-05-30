@@ -42,6 +42,11 @@
                     </div>
                       <button type="submit" class="btn btn-secondary">Valider</button>
                     </form>
+                        <br>
+                        <br>
+                    <form action="ServletAjouterPlat" method="post">
+                        <input type="submit" value="Ajouter un nouveau plat" class="btn btn-secondary"> 
+                    </form>
                  </div>
                </div>
              </div>
@@ -69,6 +74,11 @@
                                 <th><% out.println( cat.getCatById( ((Plat)liste.get(i)).getIdCategorie() )) ; %></th>
                                 <th><% out.println(((Plat)liste.get(i)).getPrix() ); %></th>
                                 <th><button type="submit" class="btn btn-secondary">Voir ingredient</button></th>
+                            </form>
+                      
+                            <form action="ServletListePlat" method="post">
+                                <input type="hidden" name="suppr" value="<%=((Plat)liste.get(i)).getId()%>">
+                                <th><input type="submit" value="Supprimer" class="btn btn-danger"></th>
                             </form>
                         </tr>
                         <% } %>

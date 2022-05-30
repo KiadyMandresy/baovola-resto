@@ -89,14 +89,13 @@ public class DetailCommande extends BdTable{
         stmt.executeUpdate(req);
     }
     
-      public void InsertDetailCommande(int idCommande, int idPlat,int idserv,int qte) throws Exception{
-        Connex c = new Connex();
-        this.setIdCommande(idCommande);
-        this.setIdPlat(idPlat);
-        this.setIdServeur(idserv);
-        this.setQte(qte);
-        this.insertInto(c.getCon());
-    }
+      public void InsertDetailCommande(int idCommande, int idPlat,int qte) throws Exception{
+        Connex con = new Connex();
+        String req = "insert into detailCommande (id,idCommande,idPlat,qte) values(nextval('seqDetailCommande'),"+idCommande+","+idPlat+","+qte+")";
+        Connection c = con.getCon();
+        java.sql.Statement stmt = c.createStatement();
+        stmt.executeUpdate(req);
+    }   
       
         public Vector getDetail(int idCom) throws Exception{
         Vector liste = new Vector();

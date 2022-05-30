@@ -47,7 +47,7 @@ public class ServletAjoutPlat extends HttpServlet {
                 Commande c =  new Commande();
                 HttpSession session = request.getSession();
                 DetailCommande dc = new DetailCommande();
-                dc.InsertDetailCommande(c.getlastId(),idPlat,((Utilisateur)(session.getAttribute("utilisateur"))).getId(),qte);
+                dc.InsertDetailCommande(c.getlastId(),idPlat,qte);
             
                 CategoriePlat cp = new CategoriePlat();
                 Vector v = cp.getCategorie();

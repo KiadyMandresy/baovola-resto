@@ -116,9 +116,10 @@ public class Commande extends BdTable{
     }
     
         
-    public void InsertCommande(int idTable) throws Exception{
+    public void InsertCommande(int idTable,int idServeur) throws Exception{
         Connex c = new Connex();
         this.setIdTable(idTable);
+        this.setIdServeur(idServeur);
         this.setStatus(0);
         this.insertInto(c.getCon());
     }

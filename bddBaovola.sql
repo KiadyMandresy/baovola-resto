@@ -55,6 +55,8 @@ Create table serveur(
     id INTEGER NOT NULL,
     nom varchar(50),
     marge double precision,
+    idUtilisateur integer,
+    foreign key(idUtilisateur) REFERENCES utilisateur(id),
     primary key(id)
 );
 
@@ -178,6 +180,8 @@ CREATE VIEW vuePayement AS SELECT t.numero AS numerotable,
      JOIN latabatra t ON t.id = p.idtable;
 
 CREATE view listePlatCommande as select p.designation,c.datecom as date,d.id,d.qte as quantite,p.id as idPlat from detailCommande as d JOIN commande as c ON (d.idCommande=c.id) JOIN plat as p ON (d.idPlat=p.id) where d.idServeur is null and c.status=1 order by d.id;
+
+insert into serveur values(nextval('seqServeur'),'kiady',0.01,1);
 
 insert into utilisateur values(nextval('seqUtilisateur'),'Kiady','kiady','serveur');
 insert into utilisateur values(nextval('seqUtilisateur'),'ravo','ravo','Cuisine');
